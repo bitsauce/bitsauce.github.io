@@ -29,30 +29,50 @@ function lerp(v0, v1, t)
 
 var arrowToProjects = document.getElementById("arrow-to-projects");
 var viewProjectBtn = document.getElementById("view-project-btn");
-viewProjectBtn.style.display = "none";
 var contentContainer = document.getElementById("content-container");
+var slideshowImage = document.getElementById("slideshow-img");
 
 function showProject(key) {
     if(arrowToProjects !== undefined) {
         arrowToProjects.style.display = "none";
         viewProjectBtn.style.display = "inline";
         arrowToProjects = undefined;
+        prepareNextProject(key);
     }
+    else {
+        var animationTime = 350;
+        var timer = 0;
+        var id = setInterval(frame, 5);
+        function frame() {
+            timer += 5;
+            contentContainer.style.opacity = (1.0 - timer / animationTime).toString();
+            if(timer >= animationTime) {
+                clearInterval(id);
+                prepareNextProject(key);
+            }
+        }
+    }
+}
+
+function prepareNextProject(key) {
     var project = projects[key];
+    contentContainer.style.opacity = 0;
     document.getElementById("description-title").innerHTML = project.title;
     document.getElementById("description-text").innerHTML = project.description;
     document.getElementById("view-project-btn").href = project.url;
-    document.getElementById("slideshow-img").src = project.image;
-    contentContainer.left = contentContainer.toString() + "px";
+    
+    slideshowImage.addEventListener("load", showNextProject);
+    slideshowImage.src = project.image;
+}
 
+function showNextProject() {
+    slideshowImage.removeEventListener("load", showNextProject);
     var animationTime = 350;
     var timer = 0;
-    var a;
     var id = setInterval(frame, 5);
     function frame() {
         timer += 5;
-        contentContainer.style.left = lerp(contentContainer.clientWidth, 0, timer / animationTime).toString() + "px";
-        //document.getElementById("slideshow-img").style.opacity = (timer / animationTime).toString();
+        contentContainer.style.opacity = (timer / animationTime).toString();
         if(timer >= animationTime) {
             clearInterval(id);
         }
