@@ -15,9 +15,22 @@
 <button id="visual-computing-btn"      class="btn side-btn">Visual Computing Fundamentals</button>
 <button id="compiler-construction-btn" class="btn side-btn">Compiler Construction</button>*/
 
+function lerp(v0, v1, t)
+{
+    if(t < 0.5)
+    {
+        return v0 + (v1 - v0) * t;
+    }
+    else
+    {
+        return v1 - (v1 - v0) * (1.0 - t);
+    }
+}
+
 var arrowToProjects = document.getElementById("arrow-to-projects");
 var viewProjectBtn = document.getElementById("view-project-btn");
 viewProjectBtn.style.display = "none";
+var contentContainer = document.getElementById("content-container");
 
 function showProject(key) {
     if(arrowToProjects !== undefined) {
@@ -30,6 +43,20 @@ function showProject(key) {
     document.getElementById("description-text").innerHTML = project.description;
     document.getElementById("view-project-btn").href = project.url;
     document.getElementById("slideshow-img").src = project.image;
+    contentContainer.left = contentContainer.toString() + "px";
+
+    var animationTime = 350;
+    var timer = 0;
+    var a;
+    var id = setInterval(frame, 5);
+    function frame() {
+        timer += 5;
+        contentContainer.style.left = lerp(contentContainer.clientWidth, 0, timer / animationTime).toString() + "px";
+        //document.getElementById("slideshow-img").style.opacity = (timer / animationTime).toString();
+        if(timer >= animationTime) {
+            clearInterval(id);
+        }
+    }
 }
 
 

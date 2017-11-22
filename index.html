@@ -35,20 +35,8 @@
         html, body {
             height: 100%;
             margin: 0;
+            overflow: hidden;
         }
-
-        #slideshow-img {
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px #888888;
-            max-width: 100%;
-            max-height: 100%;
-            transition: 0.25s ease-in-out;
-        }
-
-        /*.slideshow-img:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 5)
-        }*/
 
         .main-container {
             height: 100%;
@@ -85,6 +73,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: row;
+            background: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
         }
 
         #side-menu {
@@ -121,13 +110,25 @@
             flex-grow: 1;
         }
 
-        .content-container {
+        .edge-fade {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            -webkit-mask-image: linear-gradient(to right, 
+                        rgba(0,0,0,0) 5%, 
+                        rgba(0,0,0,1) 10%,
+                        rgba(0,0,0,1) 90%,
+                        rgba(0,0,0,0) 95%);
+            );
+        }
+
+        #content-container {
             padding: 25px;
             width: 100%;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            background: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
+            position: relative;
         }
 
         .slideshow-container {
@@ -137,6 +138,19 @@
             align-items: center;
             justify-content: center;
         }
+        
+        #slideshow-img {
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px #888888;
+            max-width: 100%;
+            max-height: 100%;
+            /*transition: 0.25s ease-in-out;*/
+        }
+
+        /*.slideshow-img:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 5)
+        }*/
 
         .description-container {
             height: 25%;
@@ -163,6 +177,8 @@
 <!--
     TODO:
     o Improve the style of the side buttons
+    o Dont animate before image is loaded
+    o Scale header text
     o Add the pictures and descriptions of missing projects
     o Add fading when switching between projects
     o Add slideshow image
@@ -197,16 +213,18 @@
             </div>
 
             <!-- Content -->
-            <div class="content-container">
-                <img id="arrow-to-projects" style="position: absolute; top: 400px; z-index: 1; width: 800px; height: 300px;" src="arrow-to-projects.png" />
-                <div class="slideshow-container">
-                    <img id="slideshow-img" />
+            <div class="edge-fade">
+                <div id="content-container">
+                    <img id="arrow-to-projects" style="position: absolute; top: 400px; z-index: 1; width: 800px; height: 300px;" src="arrow-to-projects.png" />
+                    <div class="slideshow-container">
+                        <img id="slideshow-img" />
+                    </div>
+                    <div class="description-container">
+                        <div id="description-title"></div>
+                        <div id="description-text"></div>
+                    </div>
+                    <a id="view-project-btn" target="_blank" class="btn btn-default">View Project Page</a>
                 </div>
-                <div class="description-container">
-                    <div id="description-title"></div>
-                    <div id="description-text"></div>
-                </div>
-                <a id="view-project-btn" target="_blank" class="btn btn-default">View Project Page</a>
             </div>
         </div>
     </div>
