@@ -127,4 +127,12 @@ function loaded() {
     menu.style.animationPlayState = "hover";
 }
 
-window.onload = loaded;
+window.addEventListener("load", loaded);
+
+menu.classList.add("expanded");
+
+setTimeout(function() { 
+        menu.classList.remove("expanded");
+    },
+    3000
+);
