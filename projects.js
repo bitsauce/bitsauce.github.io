@@ -17,7 +17,7 @@ var projects = {
     },
     "hoverlookup": {
         "title": "HoverLookup Chrome Extension",
-        "description": "Google Chrome extension. Press [CTRL] + [SHIFT] while hovering over a word will show the wiktionary entry for that word in an inline window.",
+        "description": "Google Chrome extension. Press CTRL + SHIFT while hovering over a word will show the wiktionary entry for that word in an inline window.",
         "url": "https://github.com/bitsauce/HoverLookup_ChromeExtension",
         "images": ["images/hoverlookup_1.png", "images/hoverlookup_2.png", "images/hoverlookup_3.png", "images/hoverlookup_4.png"],
         "icon": "fa-chrome",
