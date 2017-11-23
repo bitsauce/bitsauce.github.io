@@ -91,7 +91,7 @@ var projects = {
     },
     "compiler-construction": {
         "title": "Compiler Construction",
-        "description": "Created a basic compiler for the Very Simple Language (VSL) programming language. Does parsing, tokenizing and generates assembly code for the program. Some features include: lexical scoping, function calls, recursive funciton calls, branching, while-loops and return statements.",
+        "description": "Created a basic compiler for the Very Simple Language (VSL) programming language. Does parsing, tokenizing and generates assembly code for the program. Some features include: lexical scoping, function calls, recursive function calls, branching, while-loops and return statements.",
         "url": "",
         "images": ["https://i.imgur.com/mAnSEpH.png"],
         "icon": "fa-book",
