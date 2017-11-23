@@ -7,227 +7,67 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        @font-face {
-            font-family: "lmsans";
-            src: url("Latin-Modern-Sans/lmsans10-regular.otf") format("opentype");
-        }
-
-        @font-face {
-            font-family: "lmsans";
-            src: url("Latin-Modern-Sans/lmsans10-bold.otf") format("opentype");
-            font-weight: bold;
-        }
-        
-        @font-face {
-            font-family: "lmsans";
-            src: url("Latin-Modern-Sans/lmsans10-oblique.otf") format("opentype");
-            font-style: oblique;
-        }
-
-        @font-face {
-            font-family: "lmsans";
-            src: url("Latin-Modern-Sans/lmsans10-boldoblique.otf") format("opentype");
-            font-weight: bold;
-            font-style: oblique;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .main-container {
-            height: 100%;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title {
-            height: 15%;
-            border-radius: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            background-color: rgb(238, 238, 238);
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .title h1 {
-            font-family: "lmsans";
-            font-weight: bold;
-            font-size: 300%;
-        }
-
-        .title p {
-            font-family: "lmsans";
-            font-style: italic;
-            font-size: 100%;
-        }
-
-        .page-container {
-            height: 85%;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: row;
-            background: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
-        }
-
-        #side-menu {
-            position: absolute;
-            z-index: 2;
-            height: 85%;
-            left: -240px;
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            background-color: rgb(168, 168, 168);
-            border-right-width: 2px;
-            border-right-color: rgb(59, 132, 228);
-            transition: 0.25s ease-in-out;
-        }
-
-        #side-menu:hover {
-            left: 0px;
-            background: rgba(255, 255, 255, 5)
-        }
-        
-        .side-btn {
-            background-color: rgb(164, 222, 255);
-            border-radius: 0;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        .side-category {
-            text-align: center;
-            vertical-align: middle;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        .edge-fade {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            -webkit-mask-image: linear-gradient(to right, 
-                        rgba(0,0,0,0) 5%, 
-                        rgba(0,0,0,1) 10%,
-                        rgba(0,0,0,1) 90%,
-                        rgba(0,0,0,0) 95%);
-        }
-
-        #content-container {
-            padding: 25px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            position: relative;
-        }
-
-        .slideshow-container {
-            height: 75%;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #slideshow-img {
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px #888888;
-            max-width: 100%;
-            max-height: 100%;
-            /*transition: 0.25s ease-in-out;*/
-        }
-
-        /*.slideshow-img:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 5)
-        }*/
-
-        .description-container {
-            height: 25%;
-            padding-top: 25px;
-        }
-
-        #description-title {
-            text-align: center;
-            font-size: 24pt;
-        }
-
-        #description-text {
-            text-align: center;
-            font-size: 12pt;
-        }
-
-        #view-project-btn {
-            display: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="popping-menu.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <!--
     TODO:
-    o Improve the style of the side buttons
-    o Dont animate before image is loaded
-    o Scale header text
-    o Add the pictures and descriptions of missing projects
-    o Add fading when switching between projects
-    o Add slideshow image
+    o Add contact information & linked in
 -->
 
 <body>
     <div class="main-container">
         <!-- Title component -->
         <div class="title text-center">
+            
             <h1>Marcus Loo Vergara</h1>
-            <p>Full-time computer science student who enjoys creating visual and interactive systems of all kinds!</p>
+            <p class="contact-info">
+                <span class="fa fa-at"></span><a href="mailto:marcus.loo.vergara@gmail.com" target="_top">marcus.loo.vergara@gmail.com</a>
+                <span class="fa fa-circle"></span>
+                <span class="fa fa-linkedin-square"></span><a href="https://www.linkedin.com/in/marcus-loo-vergara" target="_top">in/marcus-loo-vergara</a>
+                <span class="fa fa-circle"></span>
+                <span class="fa fa-github"></span><a href="https://github.com/bitsauce" target="_top">www.github.com/bitsauce</a>
+            </p>
+            <p class="subtitle">Full-time computer science student who enjoys creating visual and interactive systems of all kinds!</p>
+
         </div>
 
         <div class="page-container">
-            <!-- Side buttons -->
-            <div id="side-menu">
-                <div class="side-category">-- Personal --</div>
-                <button id="overworld-btn"   class="btn side-btn">Overworld</button>
-                <button id="engine-btn"      class="btn side-btn">SuperSauce Engine</button>
-                <button id="hoverlookup-btn" class="btn side-btn">HoverLookup Extension</button>
-                <button id="tankai-btn"      class="btn side-btn">TankAI (framework)</button>
-                <button id="aside-btn"           class="btn side-btn">ASIDE</button>
-
-                <div class="side-category">-- Collaborative --</div>
-                <button id="holmgang-btn" class="btn side-btn">Holmgang</button>
-                <button id="grabster-btn" class="btn side-btn">Grabster</button>
-
-                <div class="side-category">-- School --</div>
-                <button id="computer-vision-btn"       class="btn side-btn">Autonomous Vehicle Perception</button>
-                <button id="visual-computing-btn"      class="btn side-btn">Visual Computing Fundamentals</button>
-                <button id="compiler-construction-btn" class="btn side-btn">Compiler Construction</button>
-            </div>
+            <nav id="menu" class="main-menu">
+            </nav>
 
             <!-- Content -->
-            <!--<div class="edge-fade">-->
-                <div id="content-container">
-                    <img id="arrow-to-projects" style="position: absolute; top: 400px; z-index: 1; width: 800px; height: 300px;" src="arrow-to-projects.png" />
-                    <div class="slideshow-container">
-                        <img id="slideshow-img" />
+            <div id="content-container">
+                <div id="my-carousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol id="my-carousel-indicators" class="carousel-indicators">
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div id="my-carousel-inner" class="carousel-inner">
                     </div>
-                    <div class="description-container">
-                        <div id="description-title"></div>
-                        <div id="description-text"></div>
-                    </div>
-                    <a id="view-project-btn" target="_blank" class="btn btn-default">View Project Page</a>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#my-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#my-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            <!--</div>-->
+
+                <div class="description-container">
+                    <div id="description-title"></div>
+                    <div id="description-text"></div>
+                </div>
+                <a id="view-project-btn" target="_blank" class="btn btn-default">View Project Page</a>
+            </div>
         </div>
     </div>
-    
+
     <script src="projects.js"></script>
     <script src="menu.js"></script>
 </body>

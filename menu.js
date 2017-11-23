@@ -1,43 +1,15 @@
-/*               
-<div class="side-category">-- Personal --</div>
-<button id="overworld-btn"   class="btn side-btn">Overworld</button>
-<button id="engine-btn"      class="btn side-btn">SuperSauce Engine</button>
-<button id="hoverlookup-btn" class="btn side-btn">HoverLookup Extension</button>
-<button id="tankai-btn"      class="btn side-btn">TankAI (framework)</button>
-<button id="aside-btn"           class="btn side-btn">ASIDE</button>
-
-<div class="side-category">-- Collaborative --</div>
-<button id="holmgang-btn" class="btn side-btn">Holmgang</button>
-<button id="grabster-btn" class="btn side-btn">Grabster</button>
-
-<div class="side-category">-- School --</div>
-<button id="computer-vision-btn"       class="btn side-btn">Autonomous Vehicle Perception</button>
-<button id="visual-computing-btn"      class="btn side-btn">Visual Computing Fundamentals</button>
-<button id="compiler-construction-btn" class="btn side-btn">Compiler Construction</button>*/
-
-function lerp(v0, v1, t)
-{
-    if(t < 0.5)
-    {
-        return v0 + (v1 - v0) * t;
-    }
-    else
-    {
-        return v1 - (v1 - v0) * (1.0 - t);
-    }
-}
-
-var arrowToProjects = document.getElementById("arrow-to-projects");
+var arrowToProjects = true;//document.getElementById("arrow-to-projects");
 var viewProjectBtn = document.getElementById("view-project-btn");
 var contentContainer = document.getElementById("content-container");
-var slideshowImage = document.getElementById("slideshow-img");
+var transitioning = false;
 
-function showProject(key) {
+function transitionFromProject(key) {
+    if(transitioning) return;
+    transitioning = true;
     if(arrowToProjects !== undefined) {
-        arrowToProjects.style.display = "none";
-        viewProjectBtn.style.display = "inline";
+        //arrowToProjects.style.display = "none";
         arrowToProjects = undefined;
-        prepareNextProject(key);
+        showProject(key);
     }
     else {
         var animationTime = 350;
@@ -48,25 +20,27 @@ function showProject(key) {
             contentContainer.style.opacity = (1.0 - timer / animationTime).toString();
             if(timer >= animationTime) {
                 clearInterval(id);
-                prepareNextProject(key);
+                showProject(key);
             }
         }
     }
 }
 
-function prepareNextProject(key) {
+function showProject(key) {
     var project = projects[key];
     contentContainer.style.opacity = 0;
     document.getElementById("description-title").innerHTML = project.title;
     document.getElementById("description-text").innerHTML = project.description;
-    document.getElementById("view-project-btn").href = project.url;
-    
-    slideshowImage.addEventListener("load", showNextProject);
-    slideshowImage.src = project.image;
-}
+    if(project.url === "") {
+        viewProjectBtn.style.display = "none";
+    }
+    else {
+        viewProjectBtn.style.display = "inline";
+        document.getElementById("view-project-btn").href = project.url;
+    }
 
-function showNextProject() {
-    slideshowImage.removeEventListener("load", showNextProject);
+    setupCarousel(project.images);
+
     var animationTime = 350;
     var timer = 0;
     var id = setInterval(frame, 5);
@@ -75,13 +49,82 @@ function showNextProject() {
         contentContainer.style.opacity = (timer / animationTime).toString();
         if(timer >= animationTime) {
             clearInterval(id);
+            transitioning = false;
         }
     }
 }
 
+function setupCarousel(images) {
+    document.getElementById("my-carousel").style.display = "flex";
 
-document.getElementById("overworld-btn").addEventListener("click", function() { showProject("overworld"); });
-document.getElementById("engine-btn").addEventListener("click", function() { showProject("supersauce-engine"); });
-document.getElementById("hoverlookup-btn").addEventListener("click", function() { showProject("hoverlookup"); });
-document.getElementById("tankai-btn").addEventListener("click", function() { showProject("tank-ai"); });
-document.getElementById("aside-btn").addEventListener("click", function() { showProject("aside"); });
+    var indicators = document.getElementById("my-carousel-indicators");
+    while(indicators.children.length > 0) indicators.removeChild(indicators.children[0]);
+    var inner = document.getElementById("my-carousel-inner");
+    while(inner.children.length > 0) inner.removeChild(inner.children[0]);
+
+    for(var i = 0; i < images.length; i++) {
+        var indicator = document.createElement("li");
+        indicator.setAttribute("data-target", "#my-carousel");
+        indicators.appendChild(indicator);
+    
+        var imageDiv = document.createElement("div");
+        imageDiv.className = "item";
+        
+        if(i == 0) {
+            indicator.className = "active";
+            imageDiv.className += " active";
+        }
+    
+        var imageObject = document.createElement("img");
+        imageObject.src = images[i];
+        imageDiv.appendChild(imageObject);
+        inner.appendChild(imageDiv);
+    }
+}
+
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+var menu = document.getElementById("menu");
+var categories = null;
+for(var key in projects) {
+    if (projects.hasOwnProperty(key)) {
+        var category = projects[key].category;
+
+        if(!categories || !categories.hasOwnProperty(category)) {
+            var li = document.createElement("li");
+            if(!categories) {
+                categories = {};
+            }
+            else {
+                li.style.marginTop = "20px";
+            }
+            var i = document.createElement("i");
+            i.className = "fa fa-2x";
+            var span = document.createElement("span");
+            span.className = "nav-text";
+            span.style.fontWeight = "bold";
+            span.innerHTML = projects[key].category;
+            li.appendChild(i);
+            li.appendChild(span);
+            menu.appendChild(li);
+            categories[category] = li;
+        }
+
+        var a = document.createElement("a");
+        var li = document.createElement("li");
+        var i = document.createElement("i");
+        i.className = "fa fa-2x " + projects[key].icon;
+        var span = document.createElement("span");
+        span.className = "nav-text";
+        span.innerHTML = projects[key].title;
+        a.appendChild(i);
+        a.appendChild(span);
+        li.appendChild(a);
+        insertAfter(li, categories[category]);
+        categories[category] = li;
+        a.addEventListener("click", transitionFromProject.bind(null, key));
+    }
+}
+window.onload = function() { document.body.style.display = "inline"; }

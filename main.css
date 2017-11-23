@@ -1,0 +1,181 @@
+@font-face {
+    font-family: "lmsans";
+    src: url("Latin-Modern-Sans/lmsans10-regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "lmsans";
+    src: url("Latin-Modern-Sans/lmsans10-bold.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "lmsans";
+    src: url("Latin-Modern-Sans/lmsans10-oblique.otf") format("opentype");
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: "lmsans";
+    src: url("Latin-Modern-Sans/lmsans10-boldoblique.otf") format("opentype");
+    font-weight: bold;
+    font-style: oblique;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    display: none;
+}
+
+.main-container {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    height: 15%;
+    border-radius: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.title h1 {
+    font-family: "lmsans";
+    font-weight: bold;
+    font-size: 300%;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.contact-info > .fa {
+    width: auto;
+    height: auto;
+    margin-right: 4px;
+    font-size: 12pt;
+}
+
+.contact-info > .fa-circle {
+    margin-right: 14px;
+    margin-left: 14px;
+    font-size: 5pt;
+}
+
+.contact-info > a {
+    font-family: "lmsans";
+    padding-bottom: 2px;
+    font-size: 12pt;
+}
+
+.subtitle {
+    font-family: "lmsans";
+    font-style: italic;
+    font-size: 100%;
+}
+
+.contact-container {
+    text-align: right;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
+.page-container {
+    height: 85%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
+}
+
+.main-menu {
+    height: 85%;
+    top: auto;
+}
+
+#content-container {
+    padding: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-container {
+    height: 25%;
+    padding-top: 25px;
+    width: 50%;
+}
+
+#description-title {
+    font-family: "arial";
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+#description-text {
+    font-family: "arial";
+    text-align: center;
+    font-size: 12pt;
+}
+
+#view-project-btn {
+    display: none;
+}
+
+.carousel {
+    margin-right: 28.125%;
+    margin-left: 28.125%;
+    display: none;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+#my-carousel-inner {
+    display: flex;
+    flex-grow: 1;
+}
+
+#my-carousel-inner > .active {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#my-carousel-inner > div > img {
+    max-width: 100%;
+    max-height: 100%;
+}
