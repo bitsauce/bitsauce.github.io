@@ -1,7 +1,12 @@
 var projects = {
     "overworld": {
         "title": "Overworld",
-        "description": "Overworld is a 2D tile based sandbox game. Runs on the SuperSauce Engine.",
+        "description": "Overworld is a 2D tile based sandbox game written in C++. Inspired by <i>Terraria</i> and <i>Minecraft</i>, \
+                        it features: infinite world generation on the GPU, destructible terrain, \
+                        inventory and item systems, skeletal animations, in-game chat, and client-server based multiplayer. \
+                        The project has been in development since November 2011 \
+                        alongside its engine, <a href=\"https://github.com/bitsauce/SuperSauce-Engine\">SuperSauce Engine</a>, \
+                        and will continue development in the future.",
         "url": "https://bitsauce.github.io/OverworldGame",
         "images": ["https://i.imgur.com/DaMxNkY.png", "https://i.imgur.com/PIUiQyo.png", "https://i.imgur.com/0deItIz.gif", "https://i.imgur.com/JsgtE0I.png", "https://i.imgur.com/Xecojpd.gif"],
         "icon": "fa-gamepad",
@@ -9,7 +14,11 @@ var projects = {
     },
     "engine": {
         "title": "SuperSauce Engine",
-        "description": "SuperSauce Engine is a 2D game engine built on the Simple DirectMedia Library.",
+        "description": "SuperSauce Engine is a 2D game engine written in C++ using OpenGL 3.1. \
+                        The engine was originally utilizing the Windows API directly, but is now using \
+                        the <a href=\"https://www.libsdl.org/\">Simple DirectMedia Library</a> for input and window handling. Main features \
+                        include: primitive rendering, GLSL shading, vertex and index buffers, \
+                        resource management, matrix classes, and keyboard, mouse, and joystick support.",
         "url": "https://github.com/bitsauce/SuperSauce-Engine",
         "images": ["https://i.imgur.com/jtyPEgA.png", "https://i.imgur.com/7InN3bW.png", "https://i.imgur.com/VLms5pD.png", "https://i.imgur.com/3I5mVXm.png"],
         "icon": "fa-cogs",
@@ -17,7 +26,10 @@ var projects = {
     },
     "hoverlookup": {
         "title": "HoverLookup Chrome Extension",
-        "description": "Google Chrome extension. Press CTRL + SHIFT while hovering over a word will show the wiktionary entry for that word in an inline window.",
+        "description": "Google Chrome extension written in JavaScript. Pressing CTRL + SHIFT while hovering over a word will show the wiktionary entry for that word in an inline window.\
+                        As I was transitioning from Firefox to Chrome, where I had the \
+                        <i>Wiktionary and Google Translate</i> add-on installed, I was in need of a similar extension. Thus, I made this extension and later published it to \
+                        the Google Web Store (<a href=\"https://chrome.google.com/webstore/detail/hover-lookup/ogjdcbnhgjgabidifpnpiidgbkhlpnof\">link</a>).",
         "url": "https://github.com/bitsauce/HoverLookup_ChromeExtension",
         "images": ["images/hoverlookup_1.png", "images/hoverlookup_2.png", "images/hoverlookup_3.png", "images/hoverlookup_4.png"],
         "icon": "fa-chrome",
@@ -25,7 +37,9 @@ var projects = {
     },
     "tankai": {
         "title": "Tank AI",
-        "description": "Framework for AI competition featuring top-down tank control gameplay. Uses a socket-based solution for issuing commands. Written in Java.",
+        "description": "Framework for an AI competition for the game development student organization <a href=\"https://www.facebook.com/groups/1498086230434830/\">Abakus GameDev</a>. \
+                        The game features top-down tank control gameplay, and the goal of the game is to be the last man standing. \
+                        Commands are issued using a socket-based solution, and the game is written in Java.",
         "url": "https://github.com/bitsauce/AICompo",
         "images": ["https://i.imgur.com/iv5ve9E.png", "https://i.imgur.com/asa4NiR.png", "https://i.imgur.com/3IgwNC8.png"],
         "icon": "fa-gamepad",
@@ -33,7 +47,9 @@ var projects = {
     },
     "aside": {
         "title": "AngelScript IDE",
-        "description": "Simple IDE for the scripting language <i>Angel Script</i>. Made with Qt, uses QScintilla for basic syntax highlithing.",
+        "description": "A simple IDE for the scripting language <a href=\"http://www.angelcode.com/angelscript/\">Angel Script</a> made with <a href=\"https://www.qt.io/\">Qt 4</a> and <a href=\"http://pyqt.sourceforge.net/Docs/QScintilla2/\">QScintilla</a> for syntax highlighting. \
+                        Supports opening and creating projects, cascade and tab-based editing, \
+                        and simple debug functionality with breakpoint and code-stepping.",
         "url": "https://github.com/bitsauce/ASIDE",
         "images": ["https://i.imgur.com/ucEvRK3.png", "https://i.imgur.com/c9k6v7d.png"],
         "icon": "fa-wrench",
@@ -49,7 +65,9 @@ var projects = {
     },
     "grabster": {
         "title": "Grabster",
-        "description": "Summer job working as a backend and navigation programmer for Grabster's Android app. Made with React-Native.",
+        "description": "Summer job working as a backend and navigation programmer for Grabster's Android app (<a href=\"https://play.google.com/store/apps/details?id=no.grabster.android\">play store link</a>) made with React-Native. \
+                        Grabster is an app which makes it easy to buy and sell homemade food. Any time you're hungry, you can just pick \
+                        up your phone and see what's cooking in your neighborhood. ",
         "url": "http://grabster.no/#/en?_k=ruj3ro",
         "images": ["https://lh3.googleusercontent.com/8ant_pQN91flxx-b-ONa2yLSpM62ko9SheIysXn4q8Ha-4UwUzEavzNSKTrgC7s6dQ=h900-rw", "https://lh3.googleusercontent.com/Ve3ZkrTeMPAJQxa1vygjRpJJ7aXxYeIbmuuDQl-Ybz9B9zRTqIZC8AyJTafgADucBlM=h900-rw"],
         "icon": "fa-android",
