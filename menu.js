@@ -1,4 +1,3 @@
-var arrowToProjects = true;//document.getElementById("arrow-to-projects");
 var viewProjectBtn = document.getElementById("view-project-btn");
 var contentContainer = document.getElementById("content-container");
 var transitioning = false;
@@ -6,22 +5,16 @@ var transitioning = false;
 function transitionFromProject(key) {
     if(transitioning) return;
     transitioning = true;
-    if(arrowToProjects !== undefined) {
-        //arrowToProjects.style.display = "none";
-        arrowToProjects = undefined;
-        showProject(key);
-    }
-    else {
-        var animationTime = 350;
-        var timer = 0;
-        var id = setInterval(frame, 5);
-        function frame() {
-            timer += 5;
-            contentContainer.style.opacity = (1.0 - timer / animationTime).toString();
-            if(timer >= animationTime) {
-                clearInterval(id);
-                showProject(key);
-            }
+    
+    var animationTime = 350;
+    var timer = 0;
+    var id = setInterval(frame, 5);
+    function frame() {
+        timer += 5;
+        contentContainer.style.opacity = (1.0 - timer / animationTime).toString();
+        if(timer >= animationTime) {
+            clearInterval(id);
+            showProject(key);
         }
     }
 }
@@ -127,4 +120,11 @@ for(var key in projects) {
         a.addEventListener("click", transitionFromProject.bind(null, key));
     }
 }
-window.onload = function() { document.body.style.display = "inline"; }
+
+showProject("overworld");
+
+function loaded() {
+    menu.style.animationPlayState = "hover";
+}
+
+window.onload = loaded;

@@ -14,10 +14,10 @@ font-size:20px;
 }
 
 
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
-}
+/*.main-menu:hover,nav.main-menu.expanded {
+    width:260px;
+    overflow:visible;
+}*/
 
 .main-menu {
 background:#fbfbfb;
@@ -27,8 +27,10 @@ top:0;
 bottom:0;
 height:100%;
 left:0;
-width:60px;
-overflow:hidden;
+/*width:60px;
+overflow:hidden;*/
+width:260px;
+overflow:visible;
 -webkit-transition:width .05s linear;
 transition:width .05s linear;
 -webkit-transform:translateZ(0) scale(1,1);
@@ -42,7 +44,7 @@ margin:7px 0;
 .main-menu li {
 position:relative;
 display:block;
-width:250px;
+width:260px;
 }
 
 .main-menu li > a {
@@ -73,7 +75,7 @@ font-size:18px;
     position:relative;
     display:table-cell;
     vertical-align:middle;
-    width:190px;
+    width:200px;
     font-family: 'Titillium Web', sans-serif;
 }
 
