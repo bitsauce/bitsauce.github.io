@@ -81,7 +81,7 @@ var projects = {
         "title": "Autonomous Vehicle Perception",
         "description": "Trained a region-based deep convolutional network (R-CNN) on the udacity dataset. \
                         Detects all of these 5 classes: cars, trucks, pedestrians, traffic lights and bikers with moderate accuracy. \
-                        Written in Python 3 using <a href=\"http://caffe.berkeleyvision.org/tutorial/interfaces.html\">pycaffe</a> -- a port of the deep learning framework <a href=\"http://caffe.berkeleyvision.org/\">Caffe</a>.",
+                        Written in Python 3 using <a href=\"http://caffe.berkeleyvision.org/tutorial/interfaces.html\">pycaffe</a> -- a port of the deep learning framework, <a href=\"http://caffe.berkeleyvision.org/\">Caffe</a>.",
         "url": "https://github.com/bitsauce/Computer_Vision_Project",
         "images": ["https://i.imgur.com/xiUrNOe.png", "https://i.imgur.com/Ez367bd.png", "https://i.imgur.com/jMw3OMf.png"],
         "icon": "fa-book",
