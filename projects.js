@@ -69,7 +69,7 @@ var projects = {
         "title": "Grabster",
         "description": "Summer job working as a backend and navigation programmer for Grabster's Android app \
                         (<a href=\"https://play.google.com/store/apps/details?id=no.grabster.android\">play store link</a>) \
-                        made with <a href=\"https://facebook.github.io/react-native/\">React Native</a>. \
+                        made in <a href=\"https://facebook.github.io/react-native/\">React Native</a>. \
                         Grabster is an app which makes it easy to buy and sell homemade food. Any time you're hungry, you can just pick \
                         up your phone and see what's cooking in your neighborhood. ",
         "url": "http://grabster.no/#/en?_k=ruj3ro",
@@ -81,7 +81,7 @@ var projects = {
         "title": "Autonomous Vehicle Perception",
         "description": "Trained a region-based deep convolutional network (R-CNN) on the udacity dataset. \
                         Detects all of these 5 classes: cars, trucks, pedestrians, traffic lights and bikers with moderate accuracy. \
-                        Written in Python 3 using <a href=\"http://caffe.berkeleyvision.org/tutorial/interfaces.html\">pycaffe</a> (port of Caffe - a Deep Learning Framework)",
+                        Written in Python 3 using <a href=\"http://caffe.berkeleyvision.org/tutorial/interfaces.html\">pycaffe</a> -- a port of the deep learning framework <a href=\"http://caffe.berkeleyvision.org/\">Caffe</a>.",
         "url": "https://github.com/bitsauce/Computer_Vision_Project",
         "images": ["https://i.imgur.com/xiUrNOe.png", "https://i.imgur.com/Ez367bd.png", "https://i.imgur.com/jMw3OMf.png"],
         "icon": "fa-book",
