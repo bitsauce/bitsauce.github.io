@@ -41,7 +41,7 @@ var projects = {
                         The game features top-down tank control gameplay, and the goal of the game is to be the last man standing. \
                         Commands are issued using a socket-based solution, and the game is written in Java with <a href=\"https://libgdx.badlogicgames.com/\">libGDX</a>.",
         "url": "https://github.com/bitsauce/AICompo",
-        "images": ["https://i.imgur.com/iv5ve9E.png", "https://i.imgur.com/asa4NiR.png", "https://i.imgur.com/3IgwNC8.png"],
+        "images": ["images/tankai_1.gif", "https://i.imgur.com/iv5ve9E.png", "https://i.imgur.com/asa4NiR.png", "https://i.imgur.com/3IgwNC8.png"],
         "icon": "fa-gamepad",
         "category": "Personal"
     },
