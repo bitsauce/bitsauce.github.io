@@ -77,6 +77,18 @@ var projects = {
         "icon": "fa-android",
         "category": "Collaborative"
     },
+    "neural-networks": {
+        "title": "Image Captioning",
+        "description": "As part of the course <a href=\"https://cse.ucsd.edu/undergraduate/cse-190-topics-computer-science-and-engineering\">CSE 190</a> \
+         				on Neural Networks, we created a deep neural network for automatic captioning of images \
+        				using a convolutional neural network (CNN) to generate features, passing the features through \
+        				a recurrent nerual network (RNN) to generate captions for the images. \
+						The network was trained on the flickr8k dataset.",
+        "url": "",
+        "images": ["images/cse_190_sample_0.png", "images/cse_190_sample_1.png", "images/cse_190_sample_2.png", "images/cse190_model.png"],
+        "icon": "fa-book",
+        "category": "School"
+    },
     "computer-vision": {
         "title": "Autonomous Vehicle Perception",
         "description": "Trained a region-based deep convolutional network (R-CNN) on the udacity dataset. \
