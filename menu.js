@@ -5,6 +5,8 @@ var transitioning = false;
 function transitionFromProject(key) {
     if(transitioning) return;
     transitioning = true;
+
+    location.hash = key;
     
     var animationTime = 350;
     var timer = 0;
@@ -121,7 +123,14 @@ for(var key in projects) {
     }
 }
 
-showProject("overworld");
+var initialKey = location.hash.substr(1);
+if(projects.hasOwnProperty(initialKey)) {
+    showProject(initialKey);
+}
+else {
+    showProject("overworld");
+}
+
 
 function loaded() {
     menu.style.animationPlayState = "hover";
