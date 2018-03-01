@@ -1,41 +1,45 @@
-var viewProjectBtn = document.getElementById("view-project-btn");
 var contentContainer = document.getElementById("content-container");
 var transitioning = false;
 
-function transitionFromProject(key) {
-    if(transitioning) return;
-    transitioning = true;
+// TODO: Nicer tabs + slide-show controls + add things to machine learning?
 
-    location.hash = key;
-    
-    var animationTime = 350;
-    var timer = 0;
-    var id = setInterval(frame, 5);
-    function frame() {
-        timer += 5;
-        contentContainer.style.opacity = (1.0 - timer / animationTime).toString();
-        if(timer >= animationTime) {
-            clearInterval(id);
-            showProject(key);
-        }
-    }
-}
+//---------------------------------------------------
+// TAB PAGE SETUP FUNCTIONS
+//---------------------------------------------------
 
-function showProject(key) {
+function appendProject(key, addSeparator) {
     var project = projects[key];
     contentContainer.style.opacity = 0;
-    document.getElementById("description-title").innerHTML = project.title;
-    document.getElementById("description-text").innerHTML = project.description;
-    if(project.url === "") {
-        viewProjectBtn.style.display = "none";
-    }
-    else {
-        viewProjectBtn.style.display = "inline";
-        document.getElementById("view-project-btn").href = project.url;
+    
+    // Add carousel
+    contentContainer.appendChild(createCarousel(project.images, key));
+
+    // Add project title and description
+    var projectContainer = document.createElement("div");
+    projectContainer.className = "project-container";
+
+    var projectTitle = document.createElement("div");
+    projectTitle.className = "project-title";
+    projectTitle.innerHTML = project.title;
+    projectContainer.appendChild(projectTitle);
+
+    var projectDescription = document.createElement("div");
+    projectDescription.className = "project-description";
+    projectDescription.innerHTML = project.description;
+    projectContainer.appendChild(projectDescription);
+    
+    if(project.url !== "") {
+        var viewProjectButton = document.createElement("a");
+        viewProjectButton.className = "view-project-btn btn btn-default";
+        viewProjectButton.href = project.url;
+        viewProjectButton.innerHTML = "View Project Page"
+        projectContainer.appendChild(viewProjectButton);
     }
 
-    setupCarousel(project.images);
+    contentContainer.appendChild(projectContainer);
+    if(addSeparator) contentContainer.appendChild(document.createElement("hr"));
 
+    // Animate between tab pages
     var animationTime = 350;
     var timer = 0;
     var id = setInterval(frame, 5);
@@ -49,13 +53,20 @@ function showProject(key) {
     }
 }
 
-function setupCarousel(images) {
-    document.getElementById("my-carousel").style.display = "flex";
+function createCarousel(images, key) {
+    var carousel = document.createElement("div");
+    carousel.className = "carousel slide";
+    carousel.style.display = "flex";
+    carousel.id = key + "-carousel"
+    carousel.setAttribute("data-ride", "carousel");
 
-    var indicators = document.getElementById("my-carousel-indicators");
-    while(indicators.children.length > 0) indicators.removeChild(indicators.children[0]);
-    var inner = document.getElementById("my-carousel-inner");
-    while(inner.children.length > 0) inner.removeChild(inner.children[0]);
+    var indicators = document.createElement("ol");
+    indicators.className = "carousel-indicators";
+    carousel.appendChild(indicators);
+
+    var inner = document.createElement("div");
+    inner.className = "carousel-inner";
+    carousel.appendChild(inner);
 
     for(var i = 0; i < images.length; i++) {
         var indicator = document.createElement("li");
@@ -75,73 +86,76 @@ function setupCarousel(images) {
         imageDiv.appendChild(imageObject);
         inner.appendChild(imageDiv);
     }
+
+    var leftControl = document.createElement("a");
+    leftControl.href = "#" + carousel.id;
+    leftControl.className = "left carousel-control";
+    leftControl.setAttribute("data-slide", "prev");
+    carousel.appendChild(leftControl);
+                   
+    var leftIcon = document.createElement("span");
+    leftIcon.className = "glyphicon glyphicon-chevron-left";
+    leftControl.appendChild(leftIcon);
+    
+    var rightControl = document.createElement("a");
+    rightControl.href = "#" + carousel.id;
+    rightControl.className = "right carousel-control";
+    rightControl.setAttribute("data-slide", "next");
+    carousel.appendChild(rightControl);
+    
+                   
+    var rightIcon = document.createElement("span");
+    rightIcon.className = "glyphicon glyphicon-chevron-right";
+    rightControl.appendChild(rightIcon);
+
+    return carousel;
 }
 
-function insertAfter(newNode, referenceNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
+//---------------------------------------------------
+// TAB MENU
+//---------------------------------------------------
 
-var menu = document.getElementById("menu");
-var categories = null;
-for(var key in projects) {
-    if (projects.hasOwnProperty(key)) {
-        var category = projects[key].category;
+var activeTab = null;
+function setActiveTabPage() {
+    if(activeTab) activeTab.id = "";
+    this.id = "tab-active";
+    activeTab = this;
 
-        if(!categories || !categories.hasOwnProperty(category)) {
-            var li = document.createElement("li");
-            if(!categories) {
-                categories = {};
-            }
-            else {
-                li.style.marginTop = "20px";
-            }
-            var i = document.createElement("i");
-            i.className = "fa fa-2x";
-            var span = document.createElement("span");
-            span.className = "nav-text";
-            span.style.fontWeight = "bold";
-            span.innerHTML = projects[key].category;
-            li.appendChild(i);
-            li.appendChild(span);
-            menu.appendChild(li);
-            categories[category] = li;
-        }
+    var contentCont = document.getElementById("content-container");
+    while(contentCont.children.length > 0) contentCont.removeChild(contentCont.children[0]);
 
-        var a = document.createElement("a");
-        var li = document.createElement("li");
-        var i = document.createElement("i");
-        i.className = "fa fa-2x " + projects[key].icon;
-        var span = document.createElement("span");
-        span.className = "nav-text";
-        span.innerHTML = projects[key].title;
-        a.appendChild(i);
-        a.appendChild(span);
-        li.appendChild(a);
-        insertAfter(li, categories[category]);
-        categories[category] = li;
-        a.addEventListener("click", transitionFromProject.bind(null, key));
+    var projectList = tabPages[activeTab.key];
+    for(var i = 0; i < projectList.length; i++) {
+        appendProject(projectList[i], i != projectList.length - 1);
     }
 }
 
-var initialKey = location.hash.substr(1);
+// Setup tab menu
+var tabMenu = document.getElementById("tab-menu");
+for(var key in tabPages) {
+    if (tabPages.hasOwnProperty(key)) {
+        var tabBtn = document.createElement("button");
+        tabBtn.onclick = setActiveTabPage;
+        tabBtn.key = key;
+        tabBtn.innerHTML = key;
+        tabMenu.appendChild(tabBtn);
+        
+        if(!activeTab) {
+            setActiveTabPage.call(tabBtn);
+        }
+    }
+}
+
+//---------------------------------------------------
+// DIRECT PROJECT LINKS
+//---------------------------------------------------
+
+// Show project direcly if key provided
+// E.g. https://bitsauce.github.io/#overworld
+/*var initialKey = location.hash.substr(1);
 if(projects.hasOwnProperty(initialKey)) {
     showProject(initialKey);
 }
 else {
     showProject("overworld");
-}
-
-
-function loaded() {
-    menu.style.animationPlayState = "hover";
-}
-
-window.addEventListener("load", loaded);
-
-menu.classList.add("expanded");
-
-setTimeout(function() { 
-        menu.classList.remove("expanded");
-    },
-    3000
-);
+}*/
