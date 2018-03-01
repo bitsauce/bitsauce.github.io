@@ -1,3 +1,9 @@
+var tabPages = {
+    "Graphics & Games": ["overworld", "engine", "tankai", "holmgang", "visual-computing"],
+    "Machine Learning": ["neural-networks", "computer-vision"],
+    "Miscellaneous": ["grabster", "hoverlookup", "compiler-construction"]
+};
+
 var projects = {
     "overworld": {
         "title": "Overworld",
