@@ -1,8 +1,6 @@
 var contentContainer = document.getElementById("content-container");
 var transitioning = false;
 
-// TODO: Nicer tabs + slide-show controls + add things to machine learning?
-
 //---------------------------------------------------
 // TAB PAGE SETUP FUNCTIONS
 //---------------------------------------------------
@@ -10,6 +8,10 @@ var transitioning = false;
 function appendProject(key, addSeparator) {
     var project = projects[key];
     contentContainer.style.opacity = 0;
+
+    var anchor = document.createElement("a");
+    anchor.name = key;
+    contentContainer.appendChild(anchor);
     
     // Add carousel
     contentContainer.appendChild(createCarousel(project.images, key));
@@ -130,6 +132,10 @@ function setActiveTabPage() {
     }
 }
 
+// Show project direcly if key provided
+// E.g. https://bitsauce.github.io/#overworld
+var initialKey = location.hash.substr(1);
+
 // Setup tab menu
 var tabMenu = document.getElementById("tab-menu");
 for(var key in tabPages) {
@@ -140,22 +146,20 @@ for(var key in tabPages) {
         tabBtn.innerHTML = key;
         tabMenu.appendChild(tabBtn);
         
-        if(!activeTab) {
+        // Check if any of the projects on this page
+        // should be shown initially
+        var keyFound = false;
+        for(var i = 0; i < tabPages[key].length; i++) {
+            if(tabPages[key][i] === initialKey) {
+                keyFound = true;
+                break;
+            }
+        }
+
+        if(keyFound || !activeTab) {
             setActiveTabPage.call(tabBtn);
         }
     }
 }
 
-//---------------------------------------------------
-// DIRECT PROJECT LINKS
-//---------------------------------------------------
-
-// Show project direcly if key provided
-// E.g. https://bitsauce.github.io/#overworld
-/*var initialKey = location.hash.substr(1);
-if(projects.hasOwnProperty(initialKey)) {
-    showProject(initialKey);
-}
-else {
-    showProject("overworld");
-}*/
+location.hash = "#" + initialKey;

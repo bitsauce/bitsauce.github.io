@@ -158,7 +158,11 @@ body {
     width: 90%;
     border-top-color: #bbb;
     margin-top: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+#content-container > a {
+    margin-bottom: 20px;
 }
 
 .project-container {
