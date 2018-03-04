@@ -188,10 +188,7 @@ body {
 }
 
 .carousel {
-    display: none;
-    /*margin-right: 28.125%;
-    margin-left: 28.125%;*/
-    max-width: 100%;
+    transition: 0.3s;
 }
 
 .carousel-control.left {
@@ -203,9 +200,8 @@ body {
 }
 
 .carousel-inner > .item > img {
-    top: 0;
-    left: 0;
-    min-width: 100%;
     height: 500px;
-    max-width: none;
+    width: 888px;
+    object-fit: contain;
+    background-color: #000;
 }

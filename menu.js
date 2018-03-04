@@ -72,7 +72,7 @@ function createCarousel(images, key) {
 
     for(var i = 0; i < images.length; i++) {
         var indicator = document.createElement("li");
-        indicator.setAttribute("data-target", "#my-carousel");
+        indicator.setAttribute("data-target", "#" + carousel.id);
         indicators.appendChild(indicator);
     
         var imageDiv = document.createElement("div");
