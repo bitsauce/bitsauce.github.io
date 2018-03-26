@@ -5,16 +5,16 @@ var transitioning = false;
 // TAB PAGE SETUP FUNCTIONS
 //---------------------------------------------------
 
-function appendProject(key, addSeparator) {
-    var project = projects[key];
+function appendProject(tabKey, projectKey, addSeparator) {
+    var project = projectTabs[tabKey][projectKey];
     contentContainer.style.opacity = 0;
 
     var anchor = document.createElement("a");
-    anchor.name = key;
+    anchor.name = projectKey;
     contentContainer.appendChild(anchor);
     
     // Add carousel
-    contentContainer.appendChild(createCarousel(project.images, key));
+    contentContainer.appendChild(createCarousel(project.images, projectKey));
 
     // Add project title and description
     var projectContainer = document.createElement("div");
@@ -104,7 +104,6 @@ function createCarousel(images, key) {
     rightControl.className = "right carousel-control";
     rightControl.setAttribute("data-slide", "next");
     carousel.appendChild(rightControl);
-    
                    
     var rightIcon = document.createElement("span");
     rightIcon.className = "glyphicon glyphicon-chevron-right";
@@ -126,9 +125,11 @@ function setActiveTabPage() {
     var contentCont = document.getElementById("content-container");
     while(contentCont.children.length > 0) contentCont.removeChild(contentCont.children[0]);
 
-    var projectList = tabPages[activeTab.key];
-    for(var i = 0; i < projectList.length; i++) {
-        appendProject(projectList[i], i != projectList.length - 1);
+    var projectList = projectTabs[activeTab.key];
+    var i = Object.keys(projectList).length - 1;
+    for(var projectKey in projectList) {
+        appendProject(activeTab.key, projectKey, i > 0);
+        i--;
     }
 }
 
@@ -138,19 +139,19 @@ var initialKey = location.hash.substr(1);
 
 // Setup tab menu
 var tabMenu = document.getElementById("tab-menu");
-for(var key in tabPages) {
-    if (tabPages.hasOwnProperty(key)) {
+for(var tabKey in projectTabs) {
+    if (projectTabs.hasOwnProperty(tabKey)) {
         var tabBtn = document.createElement("button");
         tabBtn.onclick = setActiveTabPage;
-        tabBtn.key = key;
-        tabBtn.innerHTML = key;
+        tabBtn.key = tabKey;
+        tabBtn.innerHTML = tabKey;
         tabMenu.appendChild(tabBtn);
         
         // Check if any of the projects on this page
         // should be shown initially
         var keyFound = false;
-        for(var i = 0; i < tabPages[key].length; i++) {
-            if(tabPages[key][i] === initialKey) {
+        for(var projectKey in projectTabs[tabKey]) {
+            if(projectKey === initialKey) {
                 keyFound = true;
                 break;
             }
