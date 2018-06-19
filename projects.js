@@ -45,17 +45,13 @@ var projectTabs = {
                        "https://i.imgur.com/VLms5pD.png",
                        "https://i.imgur.com/3I5mVXm.png"]
         },
-        "hoverlookup": {
-            "title": "HoverLookup Chrome Extension",
-            "description": "Google Chrome extension written in JavaScript. Pressing CTRL + SHIFT while hovering over a word will show the wiktionary entry for that word in an inline window.\
-                            As I was transitioning from Firefox to Chrome, where I had the \
-                            <i>Wiktionary and Google Translate</i> add-on installed, I was in need of a similar extension. Thus, I made this extension and later published it to \
-                            the Google Web Store (<a href=\"https://chrome.google.com/webstore/detail/hover-lookup/ogjdcbnhgjgabidifpnpiidgbkhlpnof\">link</a>).",
-            "url": "https://github.com/bitsauce/HoverLookup_ChromeExtension",
-            "images": ["images/hoverlookup/hoverlookup_1.png",
-                       "images/hoverlookup/hoverlookup_2.png",
-                       "images/hoverlookup/hoverlookup_3.png",
-                       "images/hoverlookup/hoverlookup_4.png"]
+        "holmgang": {
+            "title": "Holmgang (Global Game Jam 16)",
+            "description": "<i>Settle your disputes through Holmgang. But pay heed to the rituals, or die like a Niding!</i> \
+                            Holmgang is a local 1v1 2D fighting game. In the game, rituals act as gameplay modifiers throughout the fight. \
+                            I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>",
+            "url": "https://github.com/bitsauce/GGJ16",
+            "images": ["images/holmgang_1.png", "images/holmgang_2.png", "images/holmgang_3.png"]
         },
         "tankai": {
             "title": "Tank AI",
@@ -65,12 +61,39 @@ var projectTabs = {
             "url": "https://github.com/bitsauce/AICompo",
             "images": ["images/tankai_1.gif"]
         },
+        "image-and-mesh": {
+            "title": "Image and Mesh Processing",
+            "description": "As part of CSE 163 - Advanced Computer Graphics, I implemented various techniques used in \
+                            image and mesh processing. \
+                            \
+                            Image processing: Brightness, contrast, stauration, gamma adjustment. \
+                            Quantization and dithering. Convolutional filters for blurring, sharpening and edge detection. \
+                            Antialiased scale and shifting. Non-linear fish-eye filter. \
+                            \
+                            Mesh processing: Phong-based OpenGL renderer. Edge Collapsing and Surface Simplification Using Quadratic Error Metrics",
+            "url": "https://bitsauce.github.io/Geometric-Modeling-and-Mesh-Simplification/",
+            "images": ["images/image-and-mesh/flower_quantize_plot.png",
+                       "images/image-and-mesh/flower_FloydSteinbergDither_plot.png",
+                       "images/image-and-mesh/mandrill_blur_plot.png",
+                       "images/image-and-mesh/flower_edgeDetect_plot.png",
+                       "images/image-and-mesh/wave_size_200_339_scale_plot.png",
+                       "images/image-and-mesh/shift_animation.gif",
+                       "images/image-and-mesh/shed.bmp",
+                       "images/image-and-mesh/mandrill.bmp",
+                       "images/image-and-mesh/bunnies.png"]
+        },
+        "visual-computing": {
+            "title": "Visual Computing Fundamentals",
+            "description": "Simple model-view-projection rendering in 3D using C++ with OpenGL 4.3. Supports traditional WASD and mouse camera controls; WASD moves the camera relative to its Z-axis, and the mouse rotates the camera. Shapes can be selected and moved from one cell to another, applying smooth movement between start and destination.",
+            "url": "https://github.com/bitsauce/Visual_Computing_Fundementals",
+            "images": ["https://i.imgur.com/9QkB6kg.png"]
+        }
     },
     "Machine Learning": {
         "keypoint-rcnn": {
             "title": "Keypoint R-CNN",
             "description": "Extended the Mask R-CNN model to detect human keypoint in images of people as part of the course <a href=\"https://cseweb.ucsd.edu/classes/sp18/cse252C-a/\">CSE 252C - Selected Topics in Vision and Learning</a> at UCSD. \
-                            By adding a keypoint prediction head parallel to the bounding box, classification and mask heads, this model predicts 17 different probability masks (one for each joint of the person,) \
+                            By adding a keypoint prediction head parallel to the bounding box, classification and mask heads, this model predicts 17 different probability masks (one for each joint of the person) \
                             denoting the probability of finding a given joint type on a particular location in the image. The model was trained on the MS COCO human keypoint dataset.",
             "url": "https://github.com/bitsauce/Keypoint_RCNN",
             "images": ["images/keypoint-rcnn/model_overview.png",
@@ -115,22 +138,6 @@ var projectTabs = {
         }
     },
     "Miscellaneous": {
-        "aside": {
-            "title": "AngelScript IDE",
-            "description": "A simple IDE for the scripting language <a href=\"http://www.angelcode.com/angelscript/\">Angel Script</a> made with <a href=\"https://www.qt.io/\">Qt 4</a> and <a href=\"http://pyqt.sourceforge.net/Docs/QScintilla2/\">QScintilla</a> for syntax highlighting. \
-                            Supports opening and creating projects, cascade and tab-based editing, \
-                            and simple debug functionality with breakpoint and code-stepping.",
-            "url": "https://github.com/bitsauce/ASIDE",
-            "images": ["https://i.imgur.com/ucEvRK3.png", "https://i.imgur.com/c9k6v7d.png"]
-        },
-        "holmgang": {
-            "title": "Holmgang (Global Game Jam 16)",
-            "description": "<i>Settle your disputes through Holmgang. But pay heed to the rituals, or die like a Niding!</i> \
-                            Holmgang is a local 1v1 2D fighting game. In the game, rituals act as gameplay modifiers throughout the fight. \
-                            I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>",
-            "url": "https://github.com/bitsauce/GGJ16",
-            "images": ["images/holmgang_1.png", "images/holmgang_2.png", "images/holmgang_3.png"]
-        },
         "grabster": {
             "title": "Grabster",
             "description": "Summer job working as a backend and navigation programmer for Grabster's Android app \
@@ -141,11 +148,25 @@ var projectTabs = {
             "url": "http://grabster.no/#/en?_k=ruj3ro",
             "images": ["https://lh3.googleusercontent.com/8ant_pQN91flxx-b-ONa2yLSpM62ko9SheIysXn4q8Ha-4UwUzEavzNSKTrgC7s6dQ=h900-rw", "https://lh3.googleusercontent.com/Ve3ZkrTeMPAJQxa1vygjRpJJ7aXxYeIbmuuDQl-Ybz9B9zRTqIZC8AyJTafgADucBlM=h900-rw"]
         },
-        "visual-computing": {
-            "title": "Visual Computing Fundamentals",
-            "description": "Simple model-view-projection rendering in 3D using C++ with OpenGL 4.3. Supports traditional WASD and mouse camera controls; WASD moves the camera relative to its Z-axis, and the mouse rotates the camera. Shapes can be selected and moved from one cell to another, applying smooth movement between start and destination.",
-            "url": "https://github.com/bitsauce/Visual_Computing_Fundementals",
-            "images": ["https://i.imgur.com/9QkB6kg.png"]
+        "hoverlookup": {
+            "title": "HoverLookup Chrome Extension",
+            "description": "Google Chrome extension written in JavaScript. Pressing CTRL + SHIFT while hovering over a word will show the wiktionary entry for that word in an inline window.\
+                            As I was transitioning from Firefox to Chrome, where I had the \
+                            <i>Wiktionary and Google Translate</i> add-on installed, I was in need of a similar extension. Thus, I made this extension and later published it to \
+                            the Google Web Store (<a href=\"https://chrome.google.com/webstore/detail/hover-lookup/ogjdcbnhgjgabidifpnpiidgbkhlpnof\">link</a>).",
+            "url": "https://github.com/bitsauce/HoverLookup_ChromeExtension",
+            "images": ["images/hoverlookup/hoverlookup_1.png",
+                       "images/hoverlookup/hoverlookup_2.png",
+                       "images/hoverlookup/hoverlookup_3.png",
+                       "images/hoverlookup/hoverlookup_4.png"]
+        },
+        "aside": {
+            "title": "AngelScript IDE",
+            "description": "A simple IDE for the scripting language <a href=\"http://www.angelcode.com/angelscript/\">Angel Script</a> made with <a href=\"https://www.qt.io/\">Qt 4</a> and <a href=\"http://pyqt.sourceforge.net/Docs/QScintilla2/\">QScintilla</a> for syntax highlighting. \
+                            Supports opening and creating projects, cascade and tab-based editing, \
+                            and simple debug functionality with breakpoint and code-stepping.",
+            "url": "https://github.com/bitsauce/ASIDE",
+            "images": ["https://i.imgur.com/ucEvRK3.png", "https://i.imgur.com/c9k6v7d.png"]
         },
         "compiler-construction": {
             "title": "Compiler Construction",
