@@ -63,12 +63,12 @@ var projectTabs = {
         },
         "image-and-mesh": {
             "title": "Image and Mesh Processing",
-            "description": "As part of CSE 163 - Advanced Computer Graphics, I implemented various techniques used in \
-                            image and mesh processing. \
+            "description": "As part of CSE 163 - Advanced Computer Graphics, we implemented various techniques in \
+                            image and mesh processing.<p\><p\> \
                             \
                             Image processing: Brightness, contrast, stauration, gamma adjustment. \
                             Quantization and dithering. Convolutional filters for blurring, sharpening and edge detection. \
-                            Antialiased scale and shifting. Non-linear fish-eye filter. \
+                            Antialiased scale and shifting. Non-linear fish-eye filter.<p\><p\> \
                             \
                             Mesh processing: Phong-based OpenGL renderer. Edge Collapsing and Surface Simplification Using Quadratic Error Metrics",
             "url": "https://bitsauce.github.io/Geometric-Modeling-and-Mesh-Simplification/",
