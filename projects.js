@@ -1,6 +1,5 @@
 var projectTabs = {
-    "graphics": {
-        //"title": "Graphics & Games",
+    "Graphics & Games": {
         "soft-shadows": {
             "title": "Soft Shadows",
             "description": "An implementation of \
@@ -90,8 +89,7 @@ var projectTabs = {
             "images": ["https://i.imgur.com/9QkB6kg.png"]
         }
     },
-    "ml": {
-        //"title": "Machine Learning",
+    "Machine Learning": {
         "keypoint-rcnn": {
             "title": "Keypoint R-CNN",
             "description": "Extended the Mask R-CNN model to detect human keypoint in images of people as part of the course <a href=\"https://cseweb.ucsd.edu/classes/sp18/cse252C-a/\">CSE 252C - Selected Topics in Vision and Learning</a> at UCSD. \
@@ -143,8 +141,7 @@ var projectTabs = {
                        "images/computer-vision/image_2.png"]
         }
     },
-    "misc": {
-        //"title": "Miscellaneous",
+    "Miscellaneous": {
         "grabster": {
             "title": "Grabster",
             "description": "Summer job working as a backend and navigation programmer for Grabster's Android app \
