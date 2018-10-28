@@ -27,6 +27,8 @@ body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    font-weight: 300;
+    font-family: Open Sans, Helvetica Neue, Arial, sans-serif;
 }
 
 .main-container {
@@ -36,24 +38,22 @@ body {
     flex-direction: column;
 }
 
-.title {
-    max-height: 112px;
-    min-height: 112px;
+.header {
+    font-family: "lmsans";
     border-radius: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgb(238, 238, 238);
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #e5e5e5;
+    background-color: #fdfdfd;
 }
 
-.title h1 {
-    font-family: "lmsans";
+.header h1 {
     font-weight: bold;
-    font-size: 300%;
-    margin-top: 0px;
-    margin-bottom: 2px
+    margin-top: 4px;
+    margin-bottom: 10px;
+    color: #a8c8ca;
 }
 
 .contact-info {
@@ -79,16 +79,14 @@ body {
 }
 
 .contact-info > a {
-    font-family: "lmsans";
     padding-bottom: 2px;
     font-size: 12pt;
 }
 
 .subtitle {
-    font-family: "lmsans";
+    color: #999;
     font-style: italic;
     font-size: 100%;
-    margin: 0;
 }
 
 .tab-menu {
@@ -101,8 +99,6 @@ body {
 }
 
 .tab-menu button {
-    font-family: "arial";
-    font-weight: bold;
     font-size: 10pt;
     flex-grow: 1;
     background-color: #ddd;
@@ -112,11 +108,14 @@ body {
     padding: 0;
     transition: 0.3s;
     text-decoration: none;
+    color: #999;
+    text-transform: uppercase;
 }
 
 .tab-menu button:hover {
     background-color: #ddd;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    color: #f8775e;
 }
 
 .tab-menutab button.active {
@@ -173,16 +172,12 @@ body {
 }
 
 .project-title {
-    font-family: "arial";
-    text-align: center;
     font-size: 24pt;
-    font-weight: bold;
     margin-bottom: 8px;
 }
 
 .project-description {
-    font-family: "arial";
-    text-align: center;
+    text-align: left;
     font-size: 12pt;
     margin-bottom: 25px;
 }
