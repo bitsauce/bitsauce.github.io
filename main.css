@@ -70,6 +70,7 @@ body {
     height: auto;
     margin-right: 4px;
     font-size: 12pt;
+    color: #999;
 }
 
 .contact-info > .fa-circle {
@@ -124,6 +125,18 @@ body {
 
 #tab-active {
     background-color: inherit;
+}
+
+.tab-page {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1s; 
+}
+  
+.tab-page.fade-in {
+    opacity: 1;
+    height: auto;
 }
 
 .contact-container {
