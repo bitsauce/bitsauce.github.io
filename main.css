@@ -87,7 +87,7 @@ body {
 .subtitle {
     color: #999;
     font-style: italic;
-    font-size: 100%;
+    font-size: 11pt;
 }
 
 .tab-menu {
@@ -115,7 +115,6 @@ body {
 
 .tab-menu button:hover {
     background-color: #ddd;
-    /*text-decoration: underline;*/
     color: #f8775e;
 }
 

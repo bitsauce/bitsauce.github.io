@@ -7,7 +7,7 @@ var contentContainer = document.getElementById("content-container");
 function createProjectEntry(projectKey, project) {
     // Create project div
     var projectDiv = document.createElement("div");
-    projectDiv.id = projectKey;
+    projectDiv.id = projectKey + "-div";
     
     // Add carousel
     projectDiv.appendChild(createCarousel(project.images, projectKey));
@@ -140,6 +140,10 @@ function changeActiveTab() {
 // Show project direcly if key provided
 // E.g. https://bitsauce.github.io/#overworld
 var initialProjectKey = location.hash.substr(1);
+if(initialProjectKey === "") {
+    var url = new URL(window.location.href);
+    initialProjectKey = url.searchParams.get("project");
+}
 
 // Setup tab menu
 var tabMenu = document.getElementById("tab-menu");
@@ -154,23 +158,25 @@ for(var tabName in projectTabs) {
             initalTabName = tabName;
         }
     }
-
 }
 
 $(document).ready(function() {
     if(initalTabName) {
         changeActiveTab.call(tabs[initalTabName]);
+
+        // Schedule smooth scroll
+        function smoothScroll() {
+            $("#" + initialProjectKey + "-div")[0].scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            activeTab.pageDiv.removeEventListener("transitionend", smoothScroll);
+        }
+        activeTab.pageDiv.addEventListener("transitionend", smoothScroll);
     }
     else {
         changeActiveTab.call(tabs[Object.keys(tabs)[0]]);
     }
-
-    setTimeout(function() {
-        $("#"+initialProjectKey)[0].scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }, 1000);
 });
 
 function nextCarouselImage() {
