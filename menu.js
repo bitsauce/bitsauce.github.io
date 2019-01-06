@@ -14,7 +14,9 @@ function appendProject(tabKey, projectKey, addSeparator) {
     contentContainer.appendChild(anchor);
     
     // Add carousel
-    contentContainer.appendChild(createCarousel(project.images, projectKey));
+    var landscape = true;
+    if(project.hasOwnProperty("orientation") && project.orientation === "portrait") landscape = false;
+    contentContainer.appendChild(createCarousel(project.images, projectKey, landscape));
 
     // Add project title and description
     var projectContainer = document.createElement("div");
@@ -55,9 +57,16 @@ function appendProject(tabKey, projectKey, addSeparator) {
     }
 }
 
-function createCarousel(images, key) {
+function createCarousel(images, key, landscape) {
+    if(images.length === 1) {
+        var imageObject = document.createElement("img");
+        imageObject.className = landscape ? "image-landscape" : "image-portrait";
+        imageObject.src = images[0];
+        return imageObject;
+    }
+
     var carousel = document.createElement("div");
-    carousel.className = "carousel slide";
+    carousel.className = "carousel slide " + (landscape ? "image-landscape" : "image-portrait");
     carousel.style.display = "flex";
     carousel.id = key + "-carousel"
     carousel.setAttribute("data-ride", "carousel");
@@ -84,6 +93,7 @@ function createCarousel(images, key) {
         }
     
         var imageObject = document.createElement("img");
+        imageObject.className = landscape ? "image-landscape" : "image-portrait";
         imageObject.src = images[i];
         imageDiv.appendChild(imageObject);
         inner.appendChild(imageDiv);
@@ -133,7 +143,7 @@ function setActiveTabPage() {
     }
 }
 
-// Show project direcly if key provided
+// Show project directly if key provided
 // E.g. https://bitsauce.github.io/#overworld
 var initialKey = location.hash.substr(1);
 

@@ -22,13 +22,16 @@
     font-style: oblique;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
     font-weight: 300;
     font-family: Open Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+body {
+    font-size: 12pt;
 }
 
 .main-container {
@@ -44,7 +47,6 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     align-items: center;
-    justify-content: center;
     border-bottom: 1px solid #e5e5e5;
     background-color: #fdfdfd;
 }
@@ -69,27 +71,28 @@ body {
     width: auto;
     height: auto;
     margin-right: 4px;
-    font-size: 12pt;
+    font-size: 80%;
 }
 
 .contact-info > .fa-circle {
     margin-right: 14px;
     margin-left: 14px;
-    font-size: 5pt;
+    font-size: 35%;
 }
 
 .contact-info > a {
     padding-bottom: 2px;
-    font-size: 12pt;
+    font-size: 80%;
 }
 
 .subtitle {
     color: #999;
     font-style: italic;
-    font-size: 100%;
+    font-size: 80%;
 }
 
 .tab-menu {
+    width: 100%;
     min-height: 32px;
     max-height: 32px;
     display: flex;
@@ -110,6 +113,8 @@ body {
     text-decoration: none;
     color: #999;
     text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+    border-radius: 20px 20px 0px 0px;
 }
 
 .tab-menu button:hover {
@@ -124,6 +129,7 @@ body {
 
 #tab-active {
     background-color: inherit;
+    color: #f8775e;
 }
 
 .contact-container {
@@ -133,13 +139,65 @@ body {
     z-index: 2;
 }
 
-.page-container {
+#page-div {
+    margin-top: 25px;
     height: 85%;
     position: relative;
-    flex-grow: 1;
+    align-items: center;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     background: linear-gradient(rgb(255, 255, 255), rgb(214, 214, 214));
+}
+
+#about-me-div {
+    width: 90rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#about-me-div p {
+    color: #777;
+}
+
+#about-me-div h1, h2, h3, h4 {
+    font-family: "lmsans";
+    font-weight: bold;
+}
+
+#about-me-img {
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-right: 50px;
+    width:  200px;
+    height: 200px;
+}
+
+.left-image {
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-right: 50px;
+    width:  300px;
+    height: 300px;
+}
+
+.right-image {
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-left: 50px;
+    width:  300px;
+    height: 300px;
+}
+
+.side-by-side-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-bottom: 30px;
+    align-items: center;
 }
 
 #content-container {
@@ -150,14 +208,12 @@ body {
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
-    justify-content: center;
 }
 
 #content-container > hr {
-    width: 90%;
+    width: 90rem;
     border-top-color: #bbb;
     margin-top: 50px;
-    margin-bottom: 10px;
 }
 
 #content-container > a {
@@ -165,9 +221,8 @@ body {
 }
 
 .project-container {
-    height: 25%;
+    width: 90rem;
     padding-top: 25px;
-    width: 888px;
     text-align: center;
 }
 
@@ -184,6 +239,17 @@ body {
 
 .carousel {
     transition: 0.3s;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.image-landscape {
+    width:  90rem !important;
+    height: calc(90rem * 9 / 16) !important;
+}
+
+.image-portrait {
+    width:  calc(90rem * 9 / 16) !important;
+    height: 90rem !important;
 }
 
 .carousel-control.left {
@@ -195,8 +261,6 @@ body {
 }
 
 .carousel-inner > .item > img {
-    height: 500px;
-    width: 888px;
     object-fit: contain;
-    background-color: #000;
+    background-color: black;
 }

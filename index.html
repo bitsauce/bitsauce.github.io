@@ -6,7 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115457974-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-115457974-1');
@@ -30,14 +30,113 @@
             <p class="contact-info">
                 <span class="fa fa-at" style="top: 1px;"></span><a href="mailto:marcus.loo.vergara@gmail.com" target="_top">marcus.loo.vergara@gmail.com</a>
                 <span class="fa fa-circle"></span>
-                <span class="fa fa-linkedin-square"></span><a href="https://www.linkedin.com/in/marcus-loo-vergara" target="_top">in/marcus-loo-vergara</a>
+                <span class="fa fa-linkedin-square"></span><a href="https://www.linkedin.com/in/marcus-loo-vergara"
+                    target="_top">in/marcus-loo-vergara</a>
                 <span class="fa fa-circle"></span>
                 <span class="fa fa-github" style="top: 1px;"></span><a href="https://github.com/bitsauce" target="_top">www.github.com/bitsauce</a>
             </p>
-            <p class="subtitle">Full-time computer science student with a passion for creating visual and interactive systems -- with a newfound passion for machine learning</p>
+            <p class="subtitle">Full-time computer science student with a passion for creating visual and interactive
+                systems – with a newfound passion for machine learning</p>
         </div>
 
-        <div class="page-container">
+        <div id="page-div">
+            <div id="about-me-div">
+                <p>
+                    <div class="side-by-side-div">
+                        <img id="about-me-img" src="images/about-me/runningman.png">
+                        <div>
+                            <h2>About Me</h2>
+                            <p>
+                                My name is Marcus "Bitsauce" Loo Vergara, and I am a computer science nerd.
+                                I am currently attening my last semester of a 6 year long MSc degree in computer
+                                science from
+                                the Norwegian University of Science and Technology.
+                            </p>
+                            <p>
+                                Already in elementary school, I had a facination for all things computer and
+                                technology.
+                                Growing up in the era when 3D graphics just hit the home consoles, I gained initial
+                                interest in learning about these technologies.
+                                Determined to achieve my goal, I started to learn how to program at the age of 13
+                                with the help of Torque game eninge.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="side-by-side-div">
+                        <div>
+                            <h3>Games & Graphics</h3>
+                            <p>
+                                My journey in programming started by the desire to create experiences that
+                                I would enjoy myself, and that I could share with other people.
+                                Along the way I got an interest for the more technological side of games,
+                                in particular real-time 3D graphics. Struck with a desire to understand
+                                graphics on a more fundamental level, I sought to create a simple
+                                game engine with C++ and OpenGL. The ultimate goal would be to create a 2D game
+                                with this engine.
+                            </p>
+                        </div>
+                        <img class="right-image" src="images/about-me/holmgang.jpg">
+                    </div>
+
+                    <div class="side-by-side-div">
+                        <img class="left-image" src="images/about-me/overworld.gif">
+                        <div>
+                            <h4>Overworld</h4>
+                            <p>
+                                Overworld is the most comprehensive of these projects – an infinite,
+                                tile-based sandbox akin to Terraria and Minecraft. The project has
+                                been in development since November 2011, however its development
+                                has been put on ice due to focus on the Master's thesis.
+                                I have learned a lot
+                                about optimization for games, and how to ensure efficient communication
+                                between the GPU and CPU through the project. Maintaining a stable
+                                frame rate when generation has to happen on the fly is difficult,
+                                and lead me to utilize the GPU for general purpose computing to
+                                ease the load on the CPU.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="side-by-side-div">
+                        <div>
+                            <h4>Physically Based Shading</h4>
+                            <p>
+                                During the summer of 2018 I got an amazing opportunity – to
+                                join PlayStation's Global Developer Technology Group, and work on
+                                various projects related to PS4 graphics. One of these projects
+                                pertained to the implementation of Physically Based Shading.
+                                I learned a lot about topics in advanced 3D graphics:
+                                HDR lighting, the "metallic workflow," GPU architecture, etc.
+                            </p>
+                        </div>
+                        <img class="right-image" src="images/about-me/pbr.jpg">
+                    </div>
+
+                    <div class="side-by-side-div">
+                        <img class="left-image" src="images/about-me/carracing.png">
+                        <div>
+                            <h3>Machine Learning & Master's Thesis</h3>
+                            <p>
+                                There has been a lot of interest in artificial intelligence as of late,
+                                and I view these technologies with curiousity and fascination. These
+                                technologies have potential. My degree is in <i>visual compution</i>,
+                                where computer vision held a significant role. As such, I have taken
+                                several courses and done multiple replication studies as class projects.
+                                As with graphics, I wanted to understand deep learning on the most
+                                fundamental level, and therefore opt to implement papers from scratch,
+                                and with modifications that I deem worthy of experimentation.
+                            </p>
+                            <p>
+                                For my thesis, I ended up delving into the topic of deep reinforcement learning
+                                for self-driving vehicles. So far, I implemented the state-of-the-art method
+                                in reinforcement learning, known as Proximal Policy Optimization.
+                            </p>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <h2 style="margin-bottom: 50px;">Personal Projects & Course Projects</h2>
             <div class="tab-menu" id="tab-menu"></div>
             <div id="content-container"></div>
         </div>
