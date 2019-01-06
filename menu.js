@@ -1,60 +1,70 @@
 var contentContainer = document.getElementById("content-container");
-var transitioning = false;
 
 //---------------------------------------------------
 // TAB PAGE SETUP FUNCTIONS
 //---------------------------------------------------
 
-function appendProject(tabKey, projectKey, addSeparator) {
-    var project = projectTabs[tabKey][projectKey];
-    contentContainer.style.opacity = 0;
-
-    var anchor = document.createElement("a");
-    anchor.name = projectKey;
-    contentContainer.appendChild(anchor);
+function createProjectEntry(projectKey, project) {
+    // Create project div
+    var projectDiv = document.createElement("div");
+    projectDiv.id = projectKey + "-div";
     
     // Add carousel
     var landscape = true;
     if(project.hasOwnProperty("orientation") && project.orientation === "portrait") landscape = false;
-    contentContainer.appendChild(createCarousel(project.images, projectKey, landscape));
+    projectDiv.appendChild(createCarousel(project.images, projectKey, landscape));
 
-    // Add project title and description
-    var projectContainer = document.createElement("div");
-    projectContainer.className = "project-container";
+    // Create project details div
+    var projectDetails = document.createElement("div");
+    projectDetails.className = "project-container";
 
+    // Add project title
     var projectTitle = document.createElement("div");
     projectTitle.className = "project-title";
     projectTitle.innerHTML = project.title;
-    projectContainer.appendChild(projectTitle);
+    projectDetails.appendChild(projectTitle);
 
+    // Add project description
     var projectDescription = document.createElement("div");
     projectDescription.className = "project-description";
     projectDescription.innerHTML = project.description;
-    projectContainer.appendChild(projectDescription);
+    projectDetails.appendChild(projectDescription);
     
+    // Add project button if url provided
     if(project.url !== "") {
         var viewProjectButton = document.createElement("a");
         viewProjectButton.className = "view-project-btn btn btn-default";
         viewProjectButton.href = project.url;
         viewProjectButton.innerHTML = "View Project Page"
-        projectContainer.appendChild(viewProjectButton);
+        projectDetails.appendChild(viewProjectButton);
     }
 
-    contentContainer.appendChild(projectContainer);
-    if(addSeparator) contentContainer.appendChild(document.createElement("hr"));
+    projectDiv.appendChild(projectDetails);
+    return projectDiv;
+}
 
-    // Animate between tab pages
-    var animationTime = 350;
-    var timer = 0;
-    var id = setInterval(frame, 5);
-    function frame() {
-        timer += 5;
-        contentContainer.style.opacity = (timer / animationTime).toString();
-        if(timer >= animationTime) {
-            clearInterval(id);
-            transitioning = false;
+function createTabPageButton(tabName, tabPageDiv) {
+    // Add tab button
+    var tabButton = document.createElement("button");
+    tabButton.onclick = changeActiveTab;
+    tabButton.innerHTML = tabName;
+    tabButton.pageDiv = tabPageDiv;
+    tabs[tabName] = tabButton;
+    return tabButton;
+}
+
+function createProjectPageTab(tabName, projects) {
+    var projectPageDiv = document.createElement("div");
+    projectPageDiv.className = "tab-page";
+    var i = 0;
+    for(var projectKey in projects) {
+        projectPageDiv.appendChild(createProjectEntry(projectKey, projects[projectKey]));
+        if(i++ < Object.keys(projects).length - 1) {
+            projectPageDiv.appendChild(document.createElement("hr"));
         }
     }
+    tabMenu.appendChild(createTabPageButton(tabName, projectPageDiv));
+    return projectPageDiv;
 }
 
 function createCarousel(images, key, landscape) {
@@ -69,7 +79,7 @@ function createCarousel(images, key, landscape) {
     carousel.className = "carousel slide " + (landscape ? "image-landscape" : "image-portrait");
     carousel.style.display = "flex";
     carousel.id = key + "-carousel"
-    carousel.setAttribute("data-ride", "carousel");
+    carousel.setAttribute("data-interval", "false");
 
     var indicators = document.createElement("ol");
     indicators.className = "carousel-indicators";
@@ -127,50 +137,67 @@ function createCarousel(images, key, landscape) {
 //---------------------------------------------------
 
 var activeTab = null;
-function setActiveTabPage() {
-    if(activeTab) activeTab.id = "";
-    this.id = "tab-active";
-    activeTab = this;
-
-    var contentCont = document.getElementById("content-container");
-    while(contentCont.children.length > 0) contentCont.removeChild(contentCont.children[0]);
-
-    var projectList = projectTabs[activeTab.key];
-    var i = Object.keys(projectList).length - 1;
-    for(var projectKey in projectList) {
-        appendProject(activeTab.key, projectKey, i > 0);
-        i--;
+function changeActiveTab() {
+    if(activeTab) {
+        activeTab.id = "";
+        activeTab.pageDiv.classList.remove("fade-in");
     }
+    this.id = "tab-active";
+    this.pageDiv.classList.add("fade-in");
+    activeTab = this;
 }
 
 // Show project directly if key provided
 // E.g. https://bitsauce.github.io/#overworld
-var initialKey = location.hash.substr(1);
+var initialProjectKey = location.hash.substr(1);
+if(initialProjectKey === "") {
+    var url = new URL(window.location.href);
+    initialProjectKey = url.searchParams.get("project");
+}
 
 // Setup tab menu
 var tabMenu = document.getElementById("tab-menu");
-for(var tabKey in projectTabs) {
-    if (projectTabs.hasOwnProperty(tabKey)) {
-        var tabBtn = document.createElement("button");
-        tabBtn.onclick = setActiveTabPage;
-        tabBtn.key = tabKey;
-        tabBtn.innerHTML = tabKey;
-        tabMenu.appendChild(tabBtn);
-        
-        // Check if any of the projects on this page
-        // should be shown initially
-        var keyFound = false;
-        for(var projectKey in projectTabs[tabKey]) {
-            if(projectKey === initialKey) {
-                keyFound = true;
-                break;
-            }
-        }
+var tabs = {};
+var initalTabName = undefined;
+for(var tabName in projectTabs) {
+    contentContainer.appendChild(createProjectPageTab(tabName, projectTabs[tabName]));
 
-        if(keyFound || !activeTab) {
-            setActiveTabPage.call(tabBtn);
+    // Check if any of the projects on this page should be displayed after load
+    for(var projectKey in projectTabs[tabName]) {
+        if(projectKey === initialProjectKey) {
+            initalTabName = tabName;
         }
     }
 }
 
-location.hash = "#" + initialKey;
+$(document).ready(function() {
+    if(initalTabName) {
+        changeActiveTab.call(tabs[initalTabName]);
+
+        // Schedule smooth scroll
+        function smoothScroll() {
+            $("#" + initialProjectKey + "-div")[0].scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            activeTab.pageDiv.removeEventListener("transitionend", smoothScroll);
+        }
+        activeTab.pageDiv.addEventListener("transitionend", smoothScroll);
+    }
+    else {
+        changeActiveTab.call(tabs[Object.keys(tabs)[0]]);
+    }
+});
+
+function nextCarouselImage() {
+    $(".carousel", activeTab.pageDiv).each(function() {
+        $(this).carousel("next");
+    });
+}
+
+var carouselFrequency = 10000;
+var carouselInterval = setInterval(nextCarouselImage, carouselFrequency);
+$('.carousel').on('slide.bs.carousel', function () {
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(nextCarouselImage, carouselFrequency);
+});

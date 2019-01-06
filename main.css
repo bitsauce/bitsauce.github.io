@@ -72,6 +72,7 @@ body {
     height: auto;
     margin-right: 4px;
     font-size: 80%;
+    color: #999;
 }
 
 .contact-info > .fa-circle {
@@ -119,7 +120,6 @@ body {
 
 .tab-menu button:hover {
     background-color: #ddd;
-    /*text-decoration: underline;*/
     color: #f8775e;
 }
 
@@ -130,6 +130,18 @@ body {
 #tab-active {
     background-color: inherit;
     color: #f8775e;
+}
+
+.tab-page {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1s; 
+}
+  
+.tab-page.fade-in {
+    opacity: 1;
+    height: auto;
 }
 
 .contact-container {
