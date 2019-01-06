@@ -34,6 +34,14 @@ body {
     font-size: 12pt;
 }
 
+a {
+    color: #668198;
+}
+
+a:hover {
+    color: #295880;
+}
+
 .main-container {
     height: 100%;
     padding: 0;
@@ -234,24 +242,32 @@ body {
 
 .project-container {
     width: 90rem;
-    padding-top: 25px;
     text-align: center;
 }
 
 .project-title {
-    font-size: 24pt;
-    margin-bottom: 8px;
+    font-size: 175%;
+    font-family: "lmsans";
+    font-weight: bold;
+    margin: 20px 0px 20px 0px;
 }
 
 .project-description {
     text-align: left;
-    font-size: 12pt;
+    color: #777;
     margin-bottom: 25px;
+}
+
+.project-description > ul {
+    margin-top: 8px;
+    padding-left: 25px;
 }
 
 .carousel {
     transition: 0.3s;
     box-shadow: 0px 0px 5px #ccc;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image-landscape {

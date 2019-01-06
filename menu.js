@@ -195,9 +195,9 @@ function nextCarouselImage() {
     });
 }
 
-var carouselFrequency = 10000;
+/*var carouselFrequency = 10000;
 var carouselInterval = setInterval(nextCarouselImage, carouselFrequency);
 $('.carousel').on('slide.bs.carousel', function () {
     clearInterval(carouselInterval);
     carouselInterval = setInterval(nextCarouselImage, carouselFrequency);
-});
+});*/
