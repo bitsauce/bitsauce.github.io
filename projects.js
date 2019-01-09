@@ -1,5 +1,127 @@
 var projectTabs = {
     "Graphics & Games": {
+        "overworld": {
+            title: "Overworld",
+            description:
+            `
+                <p>
+                    Overworld is a 2D tile-based sandbox game written in C++
+                    that I have been in developing in my spare time since
+                    late 2011.
+                    
+                    The project started of as a testbed for testing the features
+                    of my game engine,
+                    <a href=\"https://github.com/bitsauce/Sauce2D\">Sauce2D</a>,
+                    which was being developed alongside the game.
+                    Eventually, I started to dedicate more time to this project, as I
+                    had many ideas of how this game would differentiate itself
+                    from similar games such as <i>Minecraft</i> and <i>Terraria</i>.
+                    
+                    The goal would later become create a fully-fledged
+                    game that would compete with these games, however,
+                    the project was put on hold due to increased workload of my studies,
+                    in addition to a slight shift in interests.
+                </p>
+                <p>
+                    The game has the following features in its current state:
+                </p>
+                <ul>
+                    <li>Infinite world generation on the GPU</li>
+                    <li>Destructible terrain with seamless tiles</li>
+                    <li>Dynamic and static 2D lighting</li>
+                    <li>Socket based (UDP) client-server multiplayer through <a href=\"http://www.jenkinssoftware.com/\">RakNet</a></li>
+                    <li>2D skeletal animation system</li>
+                    <li>Items and inventory system</li>
+                    <li>Menus and in-game chat</li>
+                </ul>
+
+                <p>
+                The project taught me to:
+                </p>
+                <ul>
+                    <li>Utilize the GPU for general purpose computations, reducing the workload of the CPU significantly.</li>
+                    <li>Design structures and utilize design patterns that allow for easy access of resources for the programmer.</li>
+                    <li>Manage Visual Studio projects with complicated dependencies, with a focus on ensuring out-of-the-box compilation.</li>
+                    <li>Avoid overscoping to reach a minimum viable product quicker.</li>
+                </ul>
+            `,
+            url: "https://bitsauce.github.io/OverworldGame",
+            images: [
+                "images/overworld/overworld_1.png",
+                "images/overworld/overworld_2.png",
+                "images/overworld/overworld_3.gif",
+                "images/overworld/overworld_4.png",
+                "images/overworld/overworld_5.gif"
+            ]
+        },
+        "engine": {
+            title: "Sauce2D",
+            description:
+            `
+            <p>
+                Sauce2D is the name of my long-term game engine endeavor
+                that has been on-going since mid 2010.
+                The project has served as a means for me to develop
+                a better understanding of how modern game engines work,
+                where many of my design decisions are inspired by
+                the designs and systems of other popular game engines and libraries
+                such as
+                <a href=\"https://www.unrealengine.com/\">Unreal Engine</a>,
+                <a href=\"https://libgdx.badlogicgames.com/\">libGDX</a>, and
+                <a href=\"https://www.garagegames.com/\">Torque3D</a>.
+                I have put great emphasis on ease of use for the programmer
+                while also striving for satisfactory run-time performance.
+                Sauce2D is written in C++ and uses OpenGL 3 to render geometry to the screen.
+                While I started out by using the Windows API to handle the game window
+                and to communicate with the operating system,
+                I eventually transitioned to use the well-maintained and complete
+                <a href=\"https://www.libsdl.org/\">Simple DirectMedia Library</a>
+                later on.
+            </p>
+            <p>
+                Here is a summary of the main features of Sauce2D:
+            </p>
+            <ul>
+                <li>Engine:</li>
+                <ul>
+                    <li>Automatic asset management, ensuring:</li>
+                    <ul>
+                        <li>Assets are easily available to all game classes.</li>
+                        <li>Assets are only loaded once when used multiple times.</li>
+                    </ul>
+                    <li>Loggings macros that dumps detailed logging information.</li>
+                    <li>Scene management with event propagation.</li>
+                    <li>Input handling supporting keyboard, mouse, and gamepads.</li>
+                </ul>
+                <li>Graphics:</li>
+                <ul>
+                    <li>Simplified primitive rendering (indexed and non-indexed).</li>
+                    <li>Sprite batching to reduce draw calls.</li>
+                    <li>Bitmap font rendering through <a href=\"http://www.angelcode.com/products/bmfont/\">BMFont</a>.</li>
+                    <li>Render targets with customizable formats.</li>
+                    <li>Automatic texture atlas generation.</li>
+                    <li>Vertex, fragment and geometry shaders.</li>
+                    <li>Multiple renter targets.</li>
+                    <li>Integer and double precision textures.</li>
+                </ul>
+                <li>Networking:</li>
+                <ul>
+                    <li>
+                        Networking is not part of the engine. However, it could be
+                        easily implemented by, for example, adding
+                        <a href=\"http://www.jenkinssoftware.com/\">RakNet</a>
+                        to the project as I did in Overworld.
+                    </li>
+                </ul>
+            `,
+            url: "https://github.com/bitsauce/SuperSauce-Engine",
+            images: [
+                "images/sauce2d/sauce2d_1.jpg",
+                "images/sauce2d/sauce2d_2.jpg",
+                "images/sauce2d/sauce2d_3.jpg",
+                "images/sauce2d/sauce2d_4.jpg"
+            ]
+        },
         "soft-shadows": {
             title: "Screen-Space Soft Shadows",
             description:
@@ -57,104 +179,6 @@ var projectTabs = {
                 "images/soft-shadows/image_6.png"
             ]
         },
-        "overworld": {
-            title: "Overworld",
-            description:
-            `
-                <p>
-                    Overworld is a 2D tile-based sandbox game written in C++
-                    that I have been in developing in my spare time since
-                    late 2011.
-                    
-                    The project started of as a testbed for testing the features
-                    of my game engine,
-                    <a href=\"https://github.com/bitsauce/Sauce2D\">Sauce2D</a>,
-                    which was being developed alongside the game.
-                    Eventually I started to dedicate more time to this project, as I
-                    had many ideas of how this game would differentiate itself
-                    from similar games such as <i>Minecraft</i> and <i>Terraria</i>.
-                    
-                    The goal would later become create a fully-fledged
-                    game that would compete with these games, however,
-                    the project was put on hold due to increased workload of my studies,
-                    in addition to a slight shift in interests.
-                </p>
-                <p>
-                    The game has the following features in its current state:
-                </p>
-                <ul>
-                    <li>Infinite world generation on the GPU</li>
-                    <li>Destructible terrain with seamless tiles</li>
-                    <li>Dynamic and static 2D lighting</li>
-                    <li>Socket based (UDP) client-server multiplayer through <a href=\"http://www.jenkinssoftware.com/\">RakNet</a></li>
-                    <li>2D skeletal animation system</li>
-                    <li>Items and inventory system</li>
-                    <li>Menus and in-game chat</li>
-                </ul>
-
-                <p>
-                The project taught me to:
-                </p>
-                <ul>
-                    <li>Utilize the GPU for general purpose computations, reducing the workload of the CPU significantly.</li>
-                    <li>Design structures and utilize design patterns that allow for easy access of resources for the programmer.</li>
-                    <li>Manage Visual Studio projects with complicated dependencies, with a focus on ensuring out-of-the-box compilation.</li>
-                    <li>Avoid overscoping to reach a minimum viable product quicker.</li>
-                </ul>
-            `,
-            url: "https://bitsauce.github.io/OverworldGame",
-            images: [
-                "images/overworld/overworld_1.png",
-                "images/overworld/overworld_2.png",
-                "images/overworld/overworld_3.gif",
-                "images/overworld/overworld_4.png",
-                "images/overworld/overworld_5.gif"
-            ]
-        },
-        "engine": {
-            title: "Sauce2D",
-            description:
-            `
-                Sauce2D is a 2D game engine written in C++ using OpenGL 3.1.
-                The engine was originally utilizing the Windows API directly, but is now using
-                the <a href=\"https://www.libsdl.org/\">Simple DirectMedia Library</a> for input and window handling. Main features
-                include: primitive rendering, GLSL shading, vertex and index buffers,
-                resource management, matrix classes, and keyboard, mouse, and joystick support.
-            `,
-            url: "https://github.com/bitsauce/SuperSauce-Engine",
-            images: [
-                "images/sauce2d/sauce2d_1.jpg",
-                "images/sauce2d/sauce2d_2.jpg",
-                "images/sauce2d/sauce2d_3.jpg",
-                "images/sauce2d/sauce2d_4.jpg"
-            ]
-        },
-        "holmgang": {
-            title: "Holmgang (Global Game Jam 16)",
-            description:
-            `
-                <i>Settle your disputes through Holmgang. But pay heed to the rituals, or die like a Niding!</i>
-                Holmgang is a local 1v1 2D fighting game. In the game, rituals act as gameplay modifiers throughout the fight.
-                I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>"
-            `,
-            url: "https://github.com/bitsauce/GGJ16",
-            images: [
-                "images/holmgang/holmgang_1.png",
-                "images/holmgang/holmgang_2.png",
-                "images/holmgang/holmgang_3.png"
-            ]
-        },
-        "tankai": {
-            title: "Tank AI",
-            description:
-            `
-                Framework for an AI competition for the game development student organization <a href=\"https://www.facebook.com/groups/1498086230434830/\">Abakus GameDev</a>.
-                The game features top-down tank control gameplay, and the goal of the game is to be the last man standing.
-                Commands are issued using a socket-based solution, and the game is written in Java with <a href=\"https://libgdx.badlogicgames.com/\">libGDX</a>.
-            `,
-            url: "https://github.com/bitsauce/AICompo",
-            images: ["images/tankai_1.gif"]
-        },
         "image-and-mesh": {
             title: "Image and Mesh Processing",
             description:
@@ -198,6 +222,41 @@ var projectTabs = {
                 "images/image-and-mesh/mandrill.bmp"
             ]
         },
+        "holmgang": {
+            title: "Holmgang (Global Game Jam 16)",
+            description:
+            `
+                <i>Settle your disputes through Holmgang. But pay heed to the rituals, or die like a Niding!</i>
+                Holmgang is a local 1v1 2D fighting game. In the game, rituals act as gameplay modifiers throughout the fight.
+                I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>"
+            `,
+            url: "https://github.com/bitsauce/GGJ16",
+            images: [
+                "images/holmgang/holmgang_1.png",
+                "images/holmgang/holmgang_2.png",
+                "images/holmgang/holmgang_3.png"
+            ]
+        },
+        "unreal-projects": {
+            title: "Unreal Engine Projects",
+            description:
+            `
+            
+            `,
+            url: "",
+            images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
+        },
+        "tankai": {
+            title: "Tank AI",
+            description:
+            `
+                Framework for an AI competition for the game development student organization <a href=\"https://www.facebook.com/groups/1498086230434830/\">Abakus GameDev</a>.
+                The game features top-down tank control gameplay, and the goal of the game is to be the last man standing.
+                Commands are issued using a socket-based solution, and the game is written in Java with <a href=\"https://libgdx.badlogicgames.com/\">libGDX</a>.
+            `,
+            url: "https://github.com/bitsauce/AICompo",
+            images: ["images/tankai_1.gif"]
+        },
         "visual-computing": {
             title: "Visual Computing Fundamentals",
             description:
@@ -209,18 +268,18 @@ var projectTabs = {
             `,
             url: "https://github.com/bitsauce/Visual_Computing_Fundementals",
             images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
-        },
-        "unreal-projects": {
-            title: "Unreal Engine Projects",
+        }
+    },
+    "Machine Learning": {
+        "reinforcement-learning": {
+            title: "Reinforcement Learning",
             description:
             `
             
             `,
             url: "",
             images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
-        }
-    },
-    "Machine Learning": {
+        },
         "keypoint-rcnn": {
             title: "Keypoint R-CNN",
             description:
