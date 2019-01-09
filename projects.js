@@ -272,13 +272,82 @@ var projectTabs = {
     },
     "Machine Learning": {
         "reinforcement-learning": {
-            title: "Reinforcement Learning",
+            title: "Deep Reinforcement Learning for Autonomous Vehicles – <p/> Master's Thesis (on-going)",
             description:
             `
-            
+            <p>
+                Eager to explore a frontier of technology
+                that promise to change society as we know it, I joined the
+                autonomous vehicle lab for my final two semesters at NTNU.
+                In accordance with my supervisor, I determined my role
+                in the team would be to explore reinforcement learning –
+                a sub-field of machine learning that focuses on creating
+                agents that act in a way that maximizes its utility with
+                respect to a predetermined goal.
+                The prospect of creating artificial intelligence that
+                can learn to drive and play games by trial-and-error
+                was fascinating to me, and is also a project
+                that allows me to combine my experience with
+                game engines and computer vision – reinforcement learning
+                for autonomous vehicles typically use driving simulators
+                such as <a href=\"https://carla.readthedocs.io/\">CARLA</a> or
+                <a href=\"https://github.com/Microsoft/AirSim\">AirSim</a>,
+                both of which are simulators that run on
+                <a href=\"https://www.unrealengine.com/">Unreal Engine 4</a>.
+            </p>
+            <p>
+                For the practical part of this project, I have thus far implemented the
+                <a href=\"https://blog.openai.com/openai-baselines-ppo/">Proximal Policy Optimization paper</a>
+                by OpenAI – a methods that, as of 2018, stands at the baseline in
+                general-purpose reinforcement learning.
+                I have experimented with a variety of models to find out
+                which model learns the fastest. My main finding in this
+                precursory study was that it was hugely impactful to scale
+                the means of the gaussian distributions to the range of
+                valid actions; for example, if action 0 represents the
+                turning of the car, then its valid range of values might be
+                [-45, 45] degrees. If the network is outputting an unbounded
+                range of values (effectively [-∞, ∞]) for the action mean,
+                it will take much longer for the network to converge.
+                Scaling the means to the appropriate range for every action
+                turned out to substantially increase training speed, and this
+                operation is, to the best of my knowledge, not used by the
+                authors of PPO nor is it present in the 
+                <a href=\"https://github.com/openai/baselines/\">official PPO source code</a>
+                from OpenAI.
+                A report comparing the 5 models I tested can be found
+                <a href=\"https://github.com/bitsauce/CarRacing-v0-ppo/blob/master/Project_Report.pdf\">here</a>,
+                along with a video of the results which can be found <a href=\"https://youtu.be/8X_LSy4TF84\">here</a>.
+            </p>
+            <p>
+                So far, my experiments have been done in the OpenAI gym
+                environment called 
+                <a href=\"https://gym.openai.com/envs/CarRacing-v0/">CarRacing-v0</a>.
+                The environment is admittedly
+                a bit simplistic compared to real-life driving or other driving
+                simulators, such as CARLA and AirSim, so I am currently looking to try
+                to train my best PPO model in CARLA to see how it compares
+                to e.g. imitation learning and previous reinforcement learning
+                methods.
+                Additionally, I am interested in expanding range of possible
+                driving scenarios in CARLA, by creating an algorithm
+                that can import and reconstruct detailed roads as described
+                road data formats such as the
+                <a href=\"http://www.opendrive.org/">OpenDRIVE</a> format.
+                Lastly, I would be interested in trying to speed up the training of the agent;
+                this, either by taking some cues from the mid 2018 paper that
+                successfully trained a real vehicle to
+                <a href=\"https://wayve.ai/blog/learning-to-drive-in-a-day-with-reinforcement-learning">follow a straight road after only 15 minutes of driving</a>,
+                or potentially exploring a combination of
+                genetic and reinforcement learning algorithms.
+            </p>
             `,
-            url: "",
-            images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
+            url: "https://github.com/bitsauce/CarRacing-v0-ppo",
+            images: [
+                "images/reinforcement-learning/image_1.png",
+                "images/reinforcement-learning/image_2.png",
+                "images/reinforcement-learning/image_3.png"
+            ]
         },
         "keypoint-rcnn": {
             title: "Keypoint R-CNN",
@@ -367,7 +436,7 @@ var projectTabs = {
                 "https://lh3.googleusercontent.com/8ant_pQN91flxx-b-ONa2yLSpM62ko9SheIysXn4q8Ha-4UwUzEavzNSKTrgC7s6dQ=h900-rw",
                 "https://lh3.googleusercontent.com/Ve3ZkrTeMPAJQxa1vygjRpJJ7aXxYeIbmuuDQl-Ybz9B9zRTqIZC8AyJTafgADucBlM=h900-rw"
             ],
-            "orientation": "portrait"
+            orientation: "portrait"
         },
         "hoverlookup": {
             title: "HoverLookup Chrome Extension",
