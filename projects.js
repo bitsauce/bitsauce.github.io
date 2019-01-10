@@ -237,15 +237,6 @@ var projectTabs = {
                 "images/holmgang/holmgang_3.png"
             ]
         },
-        "unreal-projects": {
-            title: "Unreal Engine Projects",
-            description:
-            `
-            
-            `,
-            url: "",
-            images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
-        },
         "tankai": {
             title: "Tank AI",
             description:
