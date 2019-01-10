@@ -60,7 +60,7 @@ var projectTabs = {
             `
             <p>
                 Sauce2D is the name of my long-term game engine endeavor
-                that has been on-going since mid 2010.
+                that has been ongoing since mid 2010.
                 The project has served as a means for me to develop
                 a better understanding of how modern game engines work,
                 where many of my design decisions are inspired by
@@ -272,12 +272,12 @@ var projectTabs = {
     },
     "Machine Learning": {
         "reinforcement-learning": {
-            title: "Deep Reinforcement Learning for Autonomous Vehicles – <p/> Master's Thesis (on-going)",
+            title: "Deep Reinforcement Learning for Autonomous Vehicles – <p/> Master's Thesis (ongoing)",
             description:
             `
             <p>
                 Eager to explore a frontier of technology
-                that promise to change society as we know it, I joined the
+                that promises to change society as we know it, I joined the
                 autonomous vehicle lab for my final two semesters at NTNU.
                 In accordance with my supervisor, I determined my role
                 in the team would be to explore reinforcement learning –
@@ -286,9 +286,9 @@ var projectTabs = {
                 respect to a predetermined goal.
                 The prospect of creating artificial intelligence that
                 can learn to drive and play games by trial-and-error
-                was fascinating to me, and is also a project
+                is fascinating to me, and is also a project
                 that allows me to combine my experience with
-                game engines and computer vision – reinforcement learning
+                game engines and computer vision since reinforcement learning
                 for autonomous vehicles typically use driving simulators
                 such as <a href=\"https://carla.readthedocs.io/\">CARLA</a> or
                 <a href=\"https://github.com/Microsoft/AirSim\">AirSim</a>,
