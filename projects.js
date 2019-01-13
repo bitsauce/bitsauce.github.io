@@ -59,8 +59,8 @@ var projectTabs = {
             description:
             `
             <p>
-                Sauce2D is the name of my long-term game engine endeavor
-                that has been ongoing since mid 2010.
+                Sauce2D is the name of the custom game engine
+                that I have been working on since mid 2010.
                 The project has served as a means for me to develop
                 a better understanding of how modern game engines work,
                 where many of my design decisions are inspired by
