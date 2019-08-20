@@ -11,16 +11,15 @@ var projectTabs = {
                     
                     The project started of as a testbed for testing the features
                     of my game engine,
-                    <a href=\"https://github.com/bitsauce/Sauce2D\">Sauce2D</a>,
+                    <a href=\"https://github.com/bitsauce/Sauce3D\">Sauce3D</a>,
                     which was being developed alongside the game.
                     Eventually, I started to dedicate more time to this project, as I
                     had many ideas of how this game would differentiate itself
                     from similar games such as <i>Minecraft</i> and <i>Terraria</i>.
-                    
-                    The goal would later become create a fully-fledged
-                    game that would compete with these games, however,
-                    the project was put on hold due to increased workload of my studies,
-                    in addition to a slight shift in interests.
+                </p>
+                <p>
+                    (The project is currently in the process of being ported to
+                    Unity.)
                 </p>
                 <p>
                     The game has the following features in its current state:
@@ -51,35 +50,31 @@ var projectTabs = {
                 "images/overworld/overworld_2.png",
                 "images/overworld/overworld_3.gif",
                 "images/overworld/overworld_4.png",
-                "images/overworld/overworld_5.gif"
+                "images/overworld/networking_showcase.mp4"
             ]
         },
         "engine": {
-            title: "Sauce2D (Game Engine)",
+            title: "Sauce3D (Game Engine)",
             description:
             `
             <p>
-                Sauce2D is the name of the custom game engine
-                that I have been working on since mid 2010.
-                The project has served as a means for me to develop
-                a better understanding of how modern game engines work,
-                where many of my design decisions are inspired by
-                the designs and systems of other popular game engines and libraries
-                such as
+                Sauce3D is the name of the custom game engine that I have been
+                working on since mid-2010.
+                The project has primarily served as a means for me to develop
+                a better understanding of how a modern game engine be constructed,
+                where many of the design decisions of Sauce3D are inspired by
+                popular game engines and libraries such as
                 <a href=\"https://www.unrealengine.com/\">Unreal Engine</a>,
                 <a href=\"https://libgdx.badlogicgames.com/\">libGDX</a>, and
                 <a href=\"https://www.garagegames.com/\">Torque3D</a>.
-                I have put great emphasis on ease of use for the programmer
-                while also striving for satisfactory run-time performance.
-                Sauce2D is written in C++ and uses OpenGL 3 to render geometry to the screen.
-                While I started out by using the Windows API to handle the game window
-                and to communicate with the operating system,
-                I eventually transitioned to use the well-maintained and complete
+                I have put great emphasis on ease-of-use for the programmer
+                while also striving for excellent run-time performance.
+                Sauce3D is written in C++, and it uses OpenGL 3.2 for rendering, and
                 <a href=\"https://www.libsdl.org/\">Simple DirectMedia Library</a>
-                later on.
+                for window management and communication with the OS.
             </p>
             <p>
-                Here is a summary of the main features of Sauce2D:
+                Here is a summary of the main features of Sauce3D:
             </p>
             <ul>
                 <li>Engine:</li>
@@ -87,22 +82,41 @@ var projectTabs = {
                     <li>Automatic asset management, ensuring:</li>
                     <ul>
                         <li>Assets are easily available to all game classes.</li>
-                        <li>Assets are only loaded once when used multiple times.</li>
+                        <li>Assets are only loaded once they are needed.</li>
                     </ul>
-                    <li>Loggings macros that dumps detailed logging information.</li>
-                    <li>Scene management with event propagation.</li>
+                    <li>Logging macros that can dumps detailed information.</li>
+                    <li>Scene management that will automatically propagate events through a scene hierarchy.</li>
                     <li>Input handling supporting keyboard, mouse, and gamepads.</li>
                 </ul>
                 <li>Graphics:</li>
                 <ul>
-                    <li>Simplified primitive rendering (indexed and non-indexed).</li>
+                    <li>Easy-to-use primitive rendering (indexed and non-indexed).</li>
+                    <li>.obj mesh loading</li>
                     <li>Sprite batching to reduce draw calls.</li>
                     <li>Bitmap font rendering through <a href=\"http://www.angelcode.com/products/bmfont/\">BMFont</a>.</li>
-                    <li>Render targets with customizable formats.</li>
-                    <li>Automatic texture atlas generation.</li>
-                    <li>Vertex, fragment and geometry shaders.</li>
+                    <li>Textures and render targets supporting a variety of formats, including integer and double precision.</li>
                     <li>Multiple renter targets.</li>
-                    <li>Integer and double precision textures.</li>
+                    <li>Automatic texture atlas generation.</li>
+                    <li>Vertex, fragment, and geometry shaders.</li>
+                </ul>
+                <li>Physics:</li>
+                <ul>
+                    <li>
+                        Includes a custom implementation of a rigid body dynamics system that supports up to 1.5K bodies
+                        while maintaining 30 FPS on a 2.8GHz Intel i7.
+                    </li>
+                </ul>
+                <li>UI:</li>
+                <ul>
+                    <li>
+                        Includes an implementation of a UI system that contains:
+                        <ul>
+                            <li>Resizable bitmap buttons.</li>
+                            <li>Modal dialog boxes.</li>
+                            <li>Single-line input fields.</li>
+                            <li>Cross-fade transitions.</li>
+                        </ul>
+                    </li>
                 </ul>
                 <li>Networking:</li>
                 <ul>
@@ -114,12 +128,13 @@ var projectTabs = {
                     </li>
                 </ul>
             `,
-            url: "https://github.com/bitsauce/SuperSauce-Engine",
+            url: "https://github.com/bitsauce/Sauce3D",
             images: [
-                "images/sauce2d/sauce2d_1.jpg",
-                "images/sauce2d/sauce2d_2.jpg",
-                "images/sauce2d/sauce2d_3.jpg",
-                "images/sauce2d/sauce2d_4.jpg"
+                "images/sauce3d/physics_showcase.mp4",
+                "images/sauce3d/shadow_casting_2d.mp4",
+                "images/sauce3d/mandelbrot_zoom.mp4",
+                "images/sauce3d/gui_showcase.mp4",
+                "images/sauce3d/simple_3d.mp4"
             ]
         },
         "soft-shadows": {
@@ -262,7 +277,7 @@ var projectTabs = {
             `
                 <i>Settle your disputes through Holmgang. But pay heed to the rituals, or die like a Niding!</i>
                 Holmgang is a local 1v1 2D fighting game. In the game, rituals act as gameplay modifiers throughout the fight.
-                I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>"
+                I was primary gameplay programmer in the 4-man team. Made with <a href=\"https://www.yoyogames.com/\">Game Maker Studio</a>
             `,
             url: "https://github.com/bitsauce/GGJ16",
             images: [
@@ -281,18 +296,6 @@ var projectTabs = {
             `,
             url: "https://github.com/bitsauce/AICompo",
             images: ["images/tankai_1.gif"]
-        },
-        "visual-computing": {
-            title: "Visual Computing Fundamentals",
-            description:
-            `
-                Simple model-view-projection rendering in 3D using C++ with OpenGL 4.3.
-                Supports traditional WASD and mouse camera controls; WASD moves the camera relative to its Z-axis,
-                and the mouse rotates the camera. Shapes can be selected and moved from one cell to another,
-                applying smooth movement between start and destination.
-            `,
-            url: "https://github.com/bitsauce/Visual_Computing_Fundementals",
-            images: ["images/visual-computing-fundamentals/visual-computing-fundamentals_1.jpg"]
         }
     },
     "Machine Learning": {

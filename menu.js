@@ -67,12 +67,30 @@ function createProjectPageTab(tabName, projects) {
     return projectPageDiv;
 }
 
+function createImageOrVideoElement(imageOrVideo, landscape) {
+    var element;
+    if (imageOrVideo.endsWith(".mp4")) {
+        element = document.createElement("video");
+        element.loop = "true";
+        element.muted = "true";
+        element.autoplay = "autoplay";
+        element.className = landscape ? "image-landscape" : "image-portrait";
+        source = document.createElement("source");
+        source.src = imageOrVideo;
+        source.type = "video/mp4";
+        element.appendChild(source);
+    }
+    else {
+        element = document.createElement("img");
+        element.className = landscape ? "image-landscape" : "image-portrait";
+        element.src = imageOrVideo;
+    }
+    return element;
+}
+
 function createCarousel(images, key, landscape) {
     if(images.length === 1) {
-        var imageObject = document.createElement("img");
-        imageObject.className = landscape ? "image-landscape" : "image-portrait";
-        imageObject.src = images[0];
-        return imageObject;
+        return createImageOrVideoElement(images[0], landscape);
     }
 
     var carousel = document.createElement("div");
@@ -102,10 +120,7 @@ function createCarousel(images, key, landscape) {
             imageDiv.className += " active";
         }
     
-        var imageObject = document.createElement("img");
-        imageObject.className = landscape ? "image-landscape" : "image-portrait";
-        imageObject.src = images[i];
-        imageDiv.appendChild(imageObject);
+        imageDiv.appendChild(createImageOrVideoElement(images[i], landscape));
         inner.appendChild(imageDiv);
     }
 
