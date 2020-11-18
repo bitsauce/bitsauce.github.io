@@ -4,45 +4,41 @@ var projectTabs = {
             title: "Overworld",
             description:
             `
-                <p>
-                    Overworld is a 2D tile-based sandbox game written in C++
-                    that I have been in developing in my spare time since
-                    late 2011.
-                    
-                    The project started of as a testbed for testing the features
-                    of my game engine,
-                    <a href=\"https://github.com/bitsauce/Sauce3D\">Sauce3D</a>,
-                    which was being developed alongside the game.
-                    Eventually, I started to dedicate more time to this project, as I
-                    had many ideas of how this game would differentiate itself
-                    from similar games such as <i>Minecraft</i> and <i>Terraria</i>.
-                </p>
-                <p>
-                    (The project is currently in the process of being ported to
-                    Unity.)
-                </p>
-                <p>
-                    The game has the following features in its current state:
-                </p>
-                <ul>
-                    <li>Infinite world generation on the GPU</li>
-                    <li>Destructible terrain with seamless tiles</li>
-                    <li>Dynamic and static 2D lighting</li>
-                    <li>Socket based (UDP) client-server multiplayer through <a href=\"http://www.jenkinssoftware.com/\">RakNet</a></li>
-                    <li>2D skeletal animation system</li>
-                    <li>Items and inventory system</li>
-                    <li>Menus and in-game chat</li>
-                </ul>
+            <p>
+                Overworld is a 2D tile-based sandbox game written in C++
+                that I have been in developing in my spare time since
+                late 2011.
+                
+                The project started of as a testbed for testing the features
+                of my game engine,
+                <a href=\"https://github.com/bitsauce/Sauce3D\">Sauce3D</a>,
+                which was being developed alongside the game.
+                Eventually, I started to dedicate more time to this project, as I
+                had many ideas of how this game would differentiate itself
+                from similar games such as <i>Minecraft</i> and <i>Terraria</i>.
+            </p>
+            <p>
+                The game has the following features in its current state:
+            </p>
+            <ul>
+                <li>Infinite world generation on the GPU</li>
+                <li>Destructible terrain with seamless tiles</li>
+                <li>Dynamic and static 2D lighting</li>
+                <li>Socket based (UDP) client-server multiplayer through <a href=\"http://www.jenkinssoftware.com/\">RakNet</a></li>
+                <li>2D skeletal animation system</li>
+                <li>Items and inventory system</li>
+                <li>Menus and in-game chat</li>
+            </ul>
 
-                <p>
-                The project taught me to:
-                </p>
-                <ul>
-                    <li>Utilize the GPU for general purpose computations, reducing the workload of the CPU significantly.</li>
-                    <li>Design structures and utilize design patterns that allow for easy access of resources for the programmer.</li>
-                    <li>Manage Visual Studio projects with complicated dependencies, with a focus on ensuring out-of-the-box compilation.</li>
-                    <li>Avoid overscoping to reach a minimum viable product quicker.</li>
-                </ul>
+            <p>
+            The project taught me to:
+            </p>
+            <ul>
+                <li>Utilize the GPU for general purpose computations, reducing the workload of the CPU significantly.</li>
+                <li>Design structures and utilize design patterns that allow for easy access of resources for the programmer.</li>
+                <li>Manage Visual Studio projects with complicated dependencies, with a focus on ensuring out-of-the-box compilation.</li>
+                <li>Avoid overscoping to reach a minimum viable product quicker.</li>
+            </ul>
             `,
             url: "https://bitsauce.github.io/OverworldGame",
             images: [
@@ -300,21 +296,19 @@ var projectTabs = {
     },
     "Machine Learning": {
         "reinforcement-learning": {
-            title: "Deep Reinforcement Learning for Autonomous Vehicles – <p/> Master's Thesis (ongoing)",
+            title: "Deep Reinforcement Learning for Autonomous Vehicles – <p/> Master's Thesis",
             description:
             `
             <p>
                 Eager to explore a frontier of technology
-                that promises to change society as we know it, I joined the
+                that promise to change society as we know it, I joined the
                 autonomous vehicle lab for my final two semesters at NTNU.
-                In accordance with my supervisor, I determined my role
-                in the team would be to explore reinforcement learning –
-                a sub-field of machine learning that focuses on creating
-                agents that act in a way that maximizes its utility with
-                respect to a predetermined goal.
+                Per my supervisor, we decided to explore
+                reinforcement learning for autonomous vehicles (AV).
+
                 The prospect of creating artificial intelligence that
                 can learn to drive and play games by trial-and-error
-                is fascinating to me, and is also a project
+                was fascinating to me, and is also a project
                 that allows me to combine my experience with
                 game engines and computer vision since reinforcement learning
                 for autonomous vehicles typically use driving simulators
@@ -324,13 +318,14 @@ var projectTabs = {
                 <a href=\"https://www.unrealengine.com/">Unreal Engine 4</a>.
             </p>
             <p>
-                For the practical part of this project, I have thus far implemented the
+                For the practical part of this project, I implemented the
                 <a href=\"https://blog.openai.com/openai-baselines-ppo/">Proximal Policy Optimization paper</a>
-                by OpenAI – a methods that, as of 2018, stands at the baseline in
+                by OpenAI – a method that, as of 2018, stands as the baseline in
                 general-purpose reinforcement learning.
-                I have experimented with a variety of models to find out
-                which model learns the fastest. My main finding in this
-                precursory study was that it was hugely impactful to scale
+                
+                The main finding in my <a href=\"https://github.com/bitsauce/CarRacing-v0-ppo/blob/master/Project_Report.pdf\">precursory study</a>
+                (also see <a href=\"https://youtu.be/8X_LSy4TF84\">this video</a>)
+                was that it was hugely impactful to scale
                 the means of the gaussian distributions to the range of
                 valid actions; for example, if action 0 represents the
                 turning of the car, then its valid range of values might be
@@ -343,38 +338,24 @@ var projectTabs = {
                 authors of PPO nor is it present in the 
                 <a href=\"https://github.com/openai/baselines/\">official PPO source code</a>
                 from OpenAI.
-                A report comparing the 5 models I tested can be found
-                <a href=\"https://github.com/bitsauce/CarRacing-v0-ppo/blob/master/Project_Report.pdf\">here</a>,
-                along with a video of the results which can be found <a href=\"https://youtu.be/8X_LSy4TF84\">here</a>.
             </p>
             <p>
-                So far, my experiments have been done in the OpenAI gym
-                environment called 
-                <a href=\"https://gym.openai.com/envs/CarRacing-v0/">CarRacing-v0</a>.
-                The environment is admittedly
-                a bit simplistic compared to real-life driving or other driving
-                simulators, such as CARLA and AirSim, so I am currently looking to try
-                to train my best PPO model in CARLA to see how it compares
-                to e.g. imitation learning and previous reinforcement learning
-                methods.
-                Additionally, I am interested in expanding range of possible
-                driving scenarios in CARLA, by creating an algorithm
-                that can import and reconstruct detailed roads as described
-                road data formats such as the
-                <a href=\"http://www.opendrive.org/">OpenDRIVE</a> format.
-                Lastly, I would be interested in trying to speed up the training of the agent;
-                this, either by taking some cues from the mid 2018 paper that
-                successfully trained a real vehicle to
-                <a href=\"https://wayve.ai/blog/learning-to-drive-in-a-day-with-reinforcement-learning">follow a straight road after only 15 minutes of driving</a>,
-                or potentially exploring a combination of
-                genetic and reinforcement learning algorithms.
+                The initial test environment was, admittedly, a bit simplistic.
+                Therefore, I set out to create a custom RL environment in CARLA
+                which is now made public under <a href=\"https://github.com/bitsauce/Carla-ppo\">this repository</a>.
+                One challenge that arose when using a more complex environment is
+                that the training time went up drastically. I spent the last half
+                of my master's trying to find a good model that learned to drive
+                reliably and within a a day. <a href=\"https://www.youtube.com/watch?feature=player_embedded&v=iF502iJKTIY\">This video</a> shows the results from those
+                experiments, and this is the accompanying  <a href=\"https://github.com/bitsauce/Carla-ppo/blob/master/doc/Accelerating_Training_of_DeepRL_Based_AV_Agents_Through_Env_Designs.pdf\">final report</a>.
             </p>
             `,
-            url: "https://github.com/bitsauce/CarRacing-v0-ppo",
+            url: "https://github.com/bitsauce/Carla-ppo",
             images: [
-                "images/reinforcement-learning/image_1.png",
-                "images/reinforcement-learning/image_2.png",
-                "images/reinforcement-learning/image_3.png"
+                "images/reinforcement-learning/carla_trailing_cam.png",
+                "images/reinforcement-learning/carla_state_space.png",
+                "images/reinforcement-learning/ppo_training_pipeline.png",
+                "images/reinforcement-learning/training_time.png"
             ]
         },
         "keypoint-rcnn": {
