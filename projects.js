@@ -1,13 +1,28 @@
 var projectTabs = {
     "Graphics & Games": {
+        "fractala": {
+            title: "Fractala Sandbox",
+            description:
+            `
+            <p>
+                Co-developer of <i>Fractala Sandbox</i>. <i>Fractala Sandbox</i> is a 2D physics sandbox game that is under active development since 2019.
+                The game is written in a custom engine in C++, and utilizes compute shaders heavily, implementing a comprehensive position-based dynamics
+                particle simulation that can run with hundreds of thousands of particles on many devices.
+            </p>
+            `,
+            url: "https://x.com/bitsaucedev",
+            images: [
+                "images/fractala/sandbox.mp4"
+            ]
+        },
         "overworld": {
             title: "Overworld",
             description:
             `
             <p>
-                Overworld is a 2D tile-based sandbox game written in C++
-                that I have been in developing in my spare time since
-                late 2011.
+                Overworld was a 2D tile-based sandbox game written in C++
+                that I was developing in my spare time from
+                late 2011 to 2019.
                 
                 The project started of as a testbed for testing the features
                 of my game engine,
@@ -54,8 +69,8 @@ var projectTabs = {
             description:
             `
             <p>
-                Sauce3D is the name of the custom game engine that I have been
-                working on since mid-2010.
+                Sauce3D was the name of a custom game engine that I was
+                working on from mid-2010 to 2019.
                 The project has primarily served as a means for me to develop
                 a better understanding of how a modern game engine be constructed,
                 where many of the design decisions of Sauce3D are inspired by
@@ -65,7 +80,7 @@ var projectTabs = {
                 <a href=\"https://www.garagegames.com/\">Torque3D</a>.
                 I have put great emphasis on ease-of-use for the programmer
                 while also striving for excellent run-time performance.
-                Sauce3D is written in C++, and it uses OpenGL 3.2 for rendering, and
+                Sauce3D was written in C++, and it uses OpenGL 3.2 for rendering, and
                 <a href=\"https://www.libsdl.org/\">Simple DirectMedia Library</a>
                 for window management and communication with the OS.
             </p>
@@ -308,7 +323,7 @@ var projectTabs = {
 
                 The prospect of creating artificial intelligence that
                 can learn to drive and play games by trial-and-error
-                was fascinating to me, and is also a project
+                was fascinating to me, and was also a project
                 that allows me to combine my experience with
                 game engines and computer vision since reinforcement learning
                 for autonomous vehicles typically use driving simulators
@@ -437,7 +452,7 @@ var projectTabs = {
                 Summer job working as a backend and navigation programmer for Grabster's Android app
                 (<a href=\"https://play.google.com/store/apps/details?id=no.grabster.android\">play store link</a>)
                 made in <a href=\"https://facebook.github.io/react-native/\">React Native</a>.
-                Grabster is an app which makes it easy to buy and sell homemade food. Any time you're hungry, you can just pick
+                Grabster was an app which makes it easy to buy and sell homemade food. Any time you're hungry, you can just pick
                 up your phone and see what's cooking in your neighborhood.
             `,
             url: "http://grabster.no/#/en?_k=ruj3ro",
