@@ -1,4 +1,4 @@
-@import url(https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+@import url(https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 .fa-2x {
     font-size: 2em;
