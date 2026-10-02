@@ -1,0 +1,187 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { contacts, site } from '../lib/site';
+import fallbackImage from '../assets/about/sandbox.png';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: ImageMetadata;
+}
+
+const { title, description = site.description, image = fallbackImage } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : site.name;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = await getImage({ src: image, width: 1200, format: 'jpeg' });
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preload" href="/fonts/lmsans10-bold.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage.src, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap site-header-inner">
+        <a class="site-name" href="/">{site.name}</a>
+        <nav aria-label="Main">
+          <a href="/#projects">Projects</a>
+          <a href="/#about">About</a>
+          <a href={site.resume}>Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap site-footer-inner">
+        <ul class="contact-list" aria-label="Contact">
+          {
+            contacts.map((c) => (
+              <li>
+                <a href={c.url} aria-label={`${c.label}: ${c.handle}`}>
+                  <Icon name={c.icon} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="muted">&copy; {year} {site.name}</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 20;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.75rem;
+  }
+
+  .site-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(0.9rem, 3vw, 1.75rem);
+  }
+
+  nav a {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 30rem) {
+    .site-name {
+      font-size: 1rem;
+    }
+
+    nav a:first-child {
+      display: none;
+    }
+  }
+
+  .site-footer {
+    margin-top: 6rem;
+    border-top: 1px solid var(--border);
+    padding-block: 2rem;
+  }
+
+  .site-footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .site-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .contact-list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-list a {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-list a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

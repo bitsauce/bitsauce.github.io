@@ -1,0 +1,27 @@
+---
+import mdi from '@iconify-json/mdi/icons.json';
+import simple from '@iconify-json/simple-icons/icons.json';
+
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 18 } = Astro.props;
+const [prefix, id] = name.split(':');
+const set = prefix === 'mdi' ? mdi : simple;
+const icon = (set.icons as Record<string, { body: string; width?: number; height?: number }>)[id];
+if (!icon) throw new Error(`Unknown icon ${name}`);
+const width = icon.width ?? set.width ?? 24;
+const height = icon.height ?? set.height ?? 24;
+---
+
+<svg
+  class="icon"
+  width={size}
+  height={size}
+  viewBox={`0 0 ${width} ${height}`}
+  aria-hidden="true"
+  focusable="false"
+  set:html={icon.body}
+/>

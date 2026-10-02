@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { categories, coverOf, type Project } from '../lib/projects';
+
+interface Props {
+  project: Project;
+  large?: boolean;
+}
+
+const { project, large = false } = Astro.props;
+const { title, summary, period, category, media } = project.data;
+const hasVideo = media.some((m) => 'video' in m);
+---
+
+<a class:list={['card', { large }]} href={`/projects/${project.id}/`} data-category={category}>
+  <div class="card-media">
+    <Image
+      src={coverOf(project)}
+      alt=""
+      widths={large ? [640, 960, 1440] : [400, 640, 800]}
+      sizes={large ? '(min-width: 72rem) 72rem, 100vw' : '(min-width: 72rem) 23rem, (min-width: 40rem) 50vw, 100vw'}
+    />
+    {hasVideo && <span class="badge">Video</span>}
+  </div>
+  <div class="card-body">
+    <p class="card-meta">
+      {categories[category]}
+      {period && <span> · {period}</span>}
+    </p>
+    <h3>{title}</h3>
+    <p class="card-summary">{summary}</p>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .card:hover {
+    color: inherit;
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card:hover {
+      transform: none;
+    }
+  }
+
+  .card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--media-bg);
+    overflow: hidden;
+  }
+
+  .card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-media img {
+    transform: scale(1.03);
+  }
+
+  .badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.6);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .card-body {
+    padding: 1.1rem 1.25rem 1.3rem;
+  }
+
+  .card-meta {
+    margin: 0 0 0.35rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  h3 {
+    margin-bottom: 0.4rem;
+  }
+
+  .card-summary {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.97rem;
+    line-height: 1.55;
+  }
+
+  @media (min-width: 48rem) {
+    .large {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+    }
+
+    .large .card-media {
+      aspect-ratio: auto;
+      min-height: 22rem;
+    }
+
+    .large .card-body {
+      align-self: center;
+      padding: 2rem;
+    }
+
+    .large h3 {
+      font-size: 1.8rem;
+    }
+  }
+</style>

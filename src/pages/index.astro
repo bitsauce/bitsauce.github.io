@@ -1,0 +1,341 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { categories, getProjects, legacyIds } from '../lib/projects';
+import { contacts, site } from '../lib/site';
+import profile from '../assets/about/profile.jpg';
+import holmgang from '../assets/about/holmgang.jpg';
+import sandbox from '../assets/about/sandbox.png';
+import pbr from '../assets/about/pbr.jpg';
+
+const projects = await getProjects();
+const featured = projects.filter((p) => p.data.featured);
+const others = projects.filter((p) => !p.data.featured);
+const ids = projects.map((p) => p.id);
+
+const story = [
+  {
+    title: 'Graphics & Games',
+    image: holmgang,
+    body: [
+      'Growing up in the era when 3D graphics had just hit the home consoles, I wanted to learn how these experiences were made. I scoured the internet and forums, and eventually ended up with a copy of the Torque Game Engine installed on my machine.',
+      "I didn't know programming, 3D modeling, audio design or anything related, but I was persistent. I learned C++ by carefully reading the source code of the engine and its sample projects, connecting what happened in-game with the code on screen.",
+    ],
+  },
+  {
+    title: 'Fractala Sandbox',
+    image: sandbox,
+    href: '/projects/fractala/',
+    body: [
+      'Fractala Sandbox is the most ambitious of my projects: a 2D physics sandbox game that simulates hundreds of thousands of particles in real time on the GPU.',
+      'It has been in development since 2019, and building the engine from scratch has taught me a lot about optimizing games and keeping communication between the GPU and CPU efficient.',
+    ],
+  },
+  {
+    title: 'Graphics Software Engineering Internship',
+    image: pbr,
+    body: [
+      "In the summer of 2018 I joined PlayStation's Global Developer Technology Group as an intern, working on projects related to PS4 graphics. One of them was implementing physically based rendering, in particular the metallic workflow.",
+      'I learned a lot about advanced 3D graphics, including low-level graphics programming, HDR and 4K rendering, GPU architectures and performance analysis.',
+    ],
+  },
+];
+---
+
+<Base>
+  <script is:inline slot="head" define:vars={{ ids, legacyIds }}>
+    const key = location.hash.slice(1) || new URLSearchParams(location.search).get('project');
+    const id = key && (legacyIds[key] || key);
+    if (id && ids.includes(id)) location.replace('/projects/' + id + '/');
+  </script>
+
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="eyebrow">Graphics programmer</p>
+      <h1>{site.name}</h1>
+      <p class="lede">{site.tagline}</p>
+      <div class="hero-actions">
+        <a class="button" href={site.resume}>
+          <Icon name="mdi:file-document-outline" />
+          Resume
+        </a>
+      </div>
+      <ul class="hero-contacts">
+        {
+          contacts.map((c) => (
+            <li>
+              <a href={c.url}>
+                <Icon name={c.icon} size={16} />
+                <span>{c.handle}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <Image class="portrait" src={profile} alt="Portrait of Marcus Loo Vergara" width={320} height={320} loading="eager" />
+  </section>
+
+  <section id="projects" class="wrap section">
+    <p class="eyebrow">Selected work</p>
+    <h2>Featured projects</h2>
+    <div class="featured">
+      {featured.map((p, i) => <ProjectCard project={p} large={i === 0} />)}
+    </div>
+  </section>
+
+  <section id="more" class="wrap section">
+    <div class="more-header">
+      <div>
+        <p class="eyebrow">Archive</p>
+        <h2>More projects</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects" data-filters hidden>
+        <button type="button" aria-pressed="true" data-filter="all">All</button>
+        {
+          Object.entries(categories).map(([key, label]) => (
+            <button type="button" aria-pressed="false" data-filter={key}>
+              {label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+    <div class="grid" data-grid>
+      {others.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+
+  <section id="about" class="wrap section about">
+    <p class="eyebrow">Background</p>
+    <h2>About me</h2>
+    <p class="about-intro">
+      My name is Marcus Vergara, and I am a software engineer whose main interests are computer graphics,
+      computer vision and deep learning. I graduated from the Norwegian University of Science and Technology with an
+      M.Sc. in computer science in June 2019. I love diving deep into these fields and always aim to learn and explore new
+      ideas.
+    </p>
+    <div class="story">
+      {
+        story.map((s) => (
+          <article class="story-item">
+            <Image src={s.image} alt="" width={360} height={360} />
+            <div>
+              <h3>{s.href ? <a href={s.href}>{s.title}</a> : s.title}</h3>
+              {s.body.map((p) => <p class="muted">{p}</p>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<script>
+  const filters = document.querySelector<HTMLElement>('[data-filters]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-grid] > [data-category]');
+  if (filters) {
+    filters.hidden = false;
+    const buttons = filters.querySelectorAll<HTMLButtonElement>('button');
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        cards.forEach((card) => {
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+        });
+      }),
+    );
+  }
+</script>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-block: clamp(3rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .lede {
+    max-width: 36rem;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.75rem 0 1.5rem;
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.92rem;
+  }
+
+  .hero-contacts a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .hero-contacts a:hover {
+    color: var(--accent);
+  }
+
+  .portrait {
+    width: clamp(9rem, 22vw, 18rem);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px var(--border), var(--shadow);
+  }
+
+  @media (max-width: 44rem) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait {
+      grid-row: 1;
+    }
+  }
+
+  .section {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .featured > :global(:first-child) {
+    grid-column: 1 / -1;
+  }
+
+  .more-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .more-header h2 {
+    margin-bottom: 0;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filters[hidden] {
+    display: none;
+  }
+
+  .filters button {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font: 500 0.88rem/1.2 var(--font-body);
+    cursor: pointer;
+  }
+
+  .filters button:hover {
+    color: var(--accent);
+  }
+
+  .filters button[aria-pressed='true'] {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 1.25rem;
+  }
+
+  .grid > [hidden] {
+    display: none;
+  }
+
+  .about-intro {
+    max-width: 44rem;
+    font-size: 1.12rem;
+  }
+
+  .story {
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    margin-top: 2.5rem;
+  }
+
+  .story-item {
+    display: grid;
+    grid-template-columns: clamp(8rem, 20vw, 13rem) 1fr;
+    align-items: center;
+    gap: clamp(1.5rem, 5vw, 3.5rem);
+    max-width: 58rem;
+  }
+
+  .story-item:nth-child(even) {
+    grid-template-columns: 1fr clamp(8rem, 20vw, 13rem);
+  }
+
+  .story-item:nth-child(even) img {
+    order: 2;
+  }
+
+  .story-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+  }
+
+  .story-item h3 a {
+    color: inherit;
+  }
+
+  .story-item p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 40rem) {
+    .story-item,
+    .story-item:nth-child(even) {
+      grid-template-columns: 1fr;
+    }
+
+    .story-item img,
+    .story-item:nth-child(even) img {
+      order: 0;
+      width: 9rem;
+    }
+  }
+</style>
