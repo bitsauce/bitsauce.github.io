@@ -6,8 +6,8 @@ period: "2018"
 order: 4
 featured: true
 links:
-  - label: Write-up
-    url: https://bitsauce.github.io/Axis-Aligned-Filtering-Soft-Shadows/
+  - label: Source on GitHub
+    url: https://github.com/bitsauce/Axis-Aligned-Filtering-Soft-Shadows
 media:
   - image: ./image_0.png
     alt: Two boxes casting soft shadows onto a floor between red and green walls
@@ -38,4 +38,4 @@ Our results:
 - Interactive frame rates of about 5 to 30 FPS on an NVIDIA GTX 970.
 - No temporal noise, although complex geometry (such as the flower) causes some visible smudging in the penumbras.
 
-Our implementation uses NVIDIA's [OptiX](https://developer.nvidia.com/rtx/ray-tracing/optix) framework for real-time ray tracing. A more detailed write-up is available on the [project page](https://bitsauce.github.io/Axis-Aligned-Filtering-Soft-Shadows/).
+Our implementation uses NVIDIA's [OptiX](https://developer.nvidia.com/rtx/ray-tracing/optix) framework for real-time ray tracing. The source code is available on [GitHub](https://github.com/bitsauce/Axis-Aligned-Filtering-Soft-Shadows).

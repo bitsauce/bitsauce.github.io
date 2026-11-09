@@ -6,8 +6,8 @@ period: 2011 to 2019
 order: 2
 featured: true
 links:
-  - label: Project page
-    url: https://bitsauce.github.io/OverworldGame
+  - label: Source on GitHub
+    url: https://github.com/bitsauce/OverworldGame
 media:
   - image: ./overworld_1.png
     alt: Overworld surface with trees, grass and caves lit by soft 2D lighting
